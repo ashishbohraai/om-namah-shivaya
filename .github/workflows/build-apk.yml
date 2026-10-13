@@ -67,3 +67,4 @@ jobs:
         with:
           name: Shiva-Devotion-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
+          compression-level: 0
