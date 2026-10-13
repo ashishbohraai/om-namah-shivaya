@@ -36,12 +36,19 @@ jobs:
           npx cap add android || true
           npx cap sync android
 
+      - name: Add Android TTS Intent Query Permission
+        run: |
+          MANIFEST="android/app/src/main/AndroidManifest.xml"
+          if grep -q "android.intent.action.TTS_SERVICE" "$MANIFEST"; then
+            echo "TTS query already present."
+          else
+            echo "Injecting TTS queries into AndroidManifest.xml..."
+            sed -i '/<\/manifest>/i \    <queries>\n        <intent>\n            <action android:name="android.intent.action.TTS_SERVICE" />\n        </intent>\n    </queries>' "$MANIFEST"
+          fi
+
       - name: Configure Custom Icons
         run: |
-          echo "Removing adaptive XML icons to prevent conflict..."
           rm -rf android/app/src/main/res/mipmap-anydpi-v26
-
-          echo "Applying custom icons to mipmap directories..."
           for dir in android/app/src/main/res/mipmap-*; do
             cp -f icon.png "$dir/ic_launcher.png"
             cp -f icon.png "$dir/ic_launcher_round.png"
