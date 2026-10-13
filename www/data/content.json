@@ -1,38 +1,170 @@
 [
   {
+    "id": "mantra_1",
+    "type": "mantra",
     "title": "महामृत्युंजय मंत्र",
     "subtitle": "Maha Mrityunjaya Mantra (Rigveda)",
     "sanskrit": "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥",
-    "translation": "We meditate on the Three-Eyed Lord who nourishes and sustains all life. May He liberate us from the bondage of death and rebirth into immortality, just as a ripe cucumber is effortlessly detached from its vine."
+    "translation": "We worship the three-eyed Lord Shiva, fragrant and nourishing all beings. May He liberate us from death and worldly bondage into immortality, just as a ripe cucumber is gently detached from its vine."
   },
   {
-    "title": "द्वादश ज्योतिर्लिंग स्तोत्रम्",
-    "subtitle": "Dvadasha Jyotirlinga Stotram (The 12 Sacred Jyotirlingas)",
-    "sanskrit": "सौराष्ट्रे सोमनाथं च श्रीशैले मल्लिकार्जुनम्।\nउज्जयिन्यां महाकालं ओंकारममलेश्वरम्॥\n\nपरल्यां वैद्यनाथं च डाकिन्यां भीमशङ्करम्।\nसेतुबन्धे तु रामेशं नागेशं दारुकावने॥\n\nवारणस्यां तु विश्वेशं त्र्यम्बकं गौतमीतटे।\nहिमालये तु केदारं घुश्मेशं च शिवालये॥\n\nएतानि ज्योतिर्लिङ्गानि सायं प्रातः पठेन्नरः।\nसप्तजन्मकृतं पापं स्मरणेन विनश्यति॥",
-    "translation": "Somnath in Saurashtra, Mallikarjuna on Srisailam, Mahakaleshwar in Ujjain, and Omkareshwar.\nVaidyanath in Parli, Bhimashankar in Dakini, Rameshwara at Setubandha, and Nageshwar in Darukavana.\nVishweshwar in Varanasi, Trimbakeshwar on the banks of Godavari, Kedarnath in the Himalayas, and Ghushmeshwar in Shivalaya.\n\nWhoever recites these twelve Jyotirlingas morning and evening destroys the sins of seven lifetimes by simple remembrance."
+    "id": "mantra_2",
+    "type": "mantra",
+    "title": "शिव पञ्चाक्षर स्तोत्रम्",
+    "subtitle": "Panchakshara Stotram • Adi Shankaracharya",
+    "sanskrit": "नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय।\nनित्याय शुद्धाय दिगम्बराय तस्मै नकाराय नमः शिवाय॥",
+    "translation": "Salutations to Lord Shiva, who wears the king of serpents as a garland, who has three eyes, whose body is smeared with sacred ashes, the supreme pure eternal reality represented by the first sacred syllable Na."
   },
   {
-    "title": "शिव ताण्डव स्तोत्रम्",
-    "subtitle": "Shiva Tandava Stotram (by Ravana)",
-    "sanskrit": "जटाटवीगलज्जलप्रवाहपावितस्थले\nगलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्।\nडमड्डमड्डमड्डमन्निनादवड्डमर्वयं\nचकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
-    "translation": "With His neck sanctified by celestial waters trickling through His matted coils, adorned with a massive serpent necklace, moving rhythmically to the resonant beats of His Damru—may Lord Shiva perform His cosmic dance and bestow auspiciousness upon us."
+    "id": "mantra_3",
+    "type": "mantra",
+    "title": "रुद्र गायत्री मंत्र",
+    "subtitle": "Rudra Gayatri Mantra • Taittiriya Aranyaka",
+    "sanskrit": "ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि।\nतन्नो रुद्रः प्रचोदयात्॥",
+    "translation": "Om, may we realize the Supreme Being, the Great God Mahadeva. May that auspicious and fiercely transformative Lord Rudra illuminate and guide our intellect."
   },
   {
-    "title": "श्री रुद्राष्टकम्",
-    "subtitle": "Shri Rudrashtakam (Goswami Tulsidas)",
-    "sanskrit": "नमामीशमीशान निर्वाणरूपं\nविभुं व्यापकं ब्रह्मवेदस्वरूपम्।\nनिजं निर्गुणं निर्विकल्पं निरीहं\nचिदाकाशमाकाशवासं भजेऽहम्॥",
-    "translation": "I bow to the Lord of Ishana, the embodiment of ultimate liberation, all-pervading, the very essence of the Vedas and Brahman. Inherent, formless, unconditioned, desireless, boundless as the sky of pure consciousness—I worship Thee."
+    "id": "jyotir_1",
+    "type": "jyotirlinga",
+    "title": "१. सोमनाथ (Somnath)",
+    "subtitle": "First Among the 12 Jyotirlingas • Saurashtra, Gujarat",
+    "sanskrit": "सौराष्ट्रे सोमनाथं च श्रीशैले मल्लिकार्जुनम्।\nउज्जयिन्यां महाकालमोङ्कारममलेश्वरम्॥",
+    "translation": "Somnath in Saurashtra represents the eternal light of Shiva that restored the Moon God Chandra. It symbolizes resilience, renewal, and liberation from worldly decay."
   },
   {
-    "title": "शिव चालीसा",
-    "subtitle": "Shiva Chalisa (Selected Key Verses)",
-    "sanskrit": "जय गणेश गिरिजा सुवन, मंगल मूल सुजान।\nकहत अयोध्यादास तुम, देहु अभय वरदान॥\n\nजय गिरिजा पति दीन दयाला। सदा करत सन्तन प्रतिपाला॥\nभाल चन्द्रमा सोहत नीके। कानन कुण्डल नागफणी के॥\n\nअंग गौर शिर गंग बहाये। मुण्डमाल तन क्षार लगाये॥\nवस्त्र खाल बाघम्बर सोहे। छवि को देख नाग मुनि मोहे॥",
-    "translation": "Hail the Lord of Parvati, merciful to the humble, protector of saints. The crescent moon adorns His forehead, serpents loop around His ears, the Ganga flows from His locks, and sacred ash covers His radiant form."
+    "id": "jyotir_2",
+    "type": "jyotirlinga",
+    "title": "२. मल्लिकार्जुन (Mallikarjuna)",
+    "subtitle": "Srisailam, Andhra Pradesh",
+    "sanskrit": "श्रीशैलशिखरे दृष्ट्वा पुनर्जन्म न विद्यते।\nमल्लिकार्जुनदेवस्य दर्शनं मुक्तिदायकम्॥",
+    "translation": "Located on the sacred hill of Srisailam, Mallikarjuna unites Shiva with Parvati as Bhramaramba. Viewing this sacred pinnacle bestows liberation from the cycle of rebirth."
   },
   {
-    "title": "शिव अष्टोत्तर शतनामावली",
-    "subtitle": "Shri Shiva Ashtottara Shatanamavali (108 Holy Names)",
-    "sanskrit": "ॐ शिवाय नमः। ॐ महेश्वराय नमः। ॐ शम्भवे नमः।\nॐ पिनाकिने नमः। ॐ शशिशेखराय नमः। ॐ वामदेवाय नमः।\nॐ विरूपाक्षाय नमः। ॐ कपर्दिने नमः। ॐ नीललोहिताय नमः।\nॐ शंकराय नमः। ॐ शूलपाणये नमः। ॐ खट्वाङ्गिने नमः।\nॐ विष्णुवल्लभाय नमः। ॐ शिपिविष्टाय नमः। ॐ अम्बिकानाथाय नमः।\nॐ श्रीकण्ठाय नमः। ॐ भक्तवत्सलाय नमः। ॐ भवाय नमः।\nॐ शर्वाय नमः। ॐ त्रिलोकेशाय नमः। ॐ शितिकण्ठाय नमः...\n\n(इति श्री शिवाष्टोत्तरशतनामावली सम्पूर्णा)",
-    "translation": "Salutations to Shiva the Auspicious, Maheshwara the Supreme Lord, Shambhu the Source of Joy, Pinakina the Wielder of the Bow, Shashishekhara Who wears the Moon, and Nilalohita the Blue-Throated Redeemer."
+    "id": "jyotir_3",
+    "type": "jyotirlinga",
+    "title": "३. महाकालेश्वर (Mahakaleshwar)",
+    "subtitle": "Ujjain, Madhya Pradesh",
+    "sanskrit": "अवन्तिकायां विहितावतारं मुक्तिप्रदानाय च सज्जनानाम्।\nअकालमृत्योः परिरक्षणार्थं वन्दे महाकालमहासुरेशम्॥",
+    "translation": "Mahakaleshwar in ancient Ujjain is the south-facing Lord of Eternity and Time. He shields sincere seekers from premature demise and worldly fear."
+  },
+  {
+    "id": "jyotir_4",
+    "type": "jyotirlinga",
+    "title": "४. ॐकारेश्वर (Omkareshwar)",
+    "subtitle": "Narmada River, Madhya Pradesh",
+    "sanskrit": "कावेरी-नर्मदयोः पवित्रे समागमे सज्जनतारणाय।\nसदाशिवमोंकारमुदारभावं नमामि संसारविनाशहेतुम्॥",
+    "translation": "Situated on a holy island sculpted in the primordial form of Om (ॐ) on the Narmada River, Omkareshwar dissolves bondages and fosters profound inner serenity."
+  },
+  {
+    "id": "jyotir_5",
+    "type": "jyotirlinga",
+    "title": "५. केदारनाथ (Kedarnath)",
+    "subtitle": "Rudraprayag, Uttarakhand Himalayas",
+    "sanskrit": "महाद्रिपार्श्वे च तटे रमन्तं सम्पूज्यमानं सततं मुनीन्द्रैः।\nसुरासुरैर्यक्षमहोरगाद्यैः केदारमीशं शिवमेकमीडे॥",
+    "translation": "High in the snowbound Garhwal Himalayas, Kedarnath is constantly meditated upon by sages and celestial beings, offering intense purification of consciousness."
+  },
+  {
+    "id": "jyotir_6",
+    "type": "jyotirlinga",
+    "title": "६. भीमाशङ्कर (Bhimashankar)",
+    "subtitle": "Sahyadri Hills, Pune, Maharashtra",
+    "sanskrit": "यं डाकिनीशाकिनिकासमाजे निषेव्यमाणं पिशिताशनैश्च।\nसदैव भीमादिकपदप्रसिद्धं तं शङ्करं भक्तहितं नमामि॥",
+    "translation": "Origin of the Bhima River in Maharashtra, Bhimashankar represents Shiva who manifested to vanquish darkness and protect earnest devotees."
+  },
+  {
+    "id": "jyotir_7",
+    "type": "jyotirlinga",
+    "title": "७. काशी विश्वनाथ (Kashi Vishwanath)",
+    "subtitle": "Varanasi, Uttar Pradesh",
+    "sanskrit": "सानन्दमानन्दवने वसन्तमानन्दकन्दं हतपापवृन्दम्।\nवाराणसीनाथमनाथनाथं श्रीविश्वनाथं शरणं प्रपद्ये॥",
+    "translation": "Lord of the universe in holy Kashi on the banks of Mother Ganga, Vishwanath imparts the saving Taraka wisdom and final spiritual release (Moksha)."
+  },
+  {
+    "id": "jyotir_8",
+    "type": "jyotirlinga",
+    "title": "८. त्र्यम्बकेश्वर (Trimbakeshwar)",
+    "subtitle": "Nashik, Maharashtra",
+    "sanskrit": "सह्याद्रिशीर्षे विमले वसन्तं गोदावरीतीरपवित्रदेशे।\nयद्दर्शनात्पातकमाशु नाशं प्रयाति तं त्र्यम्बकमीशमीडे॥",
+    "translation": "Near the source of the Godavari at the foot of Brahmagiri, Trimbakeshwar features the unique three-faced linga signifying Brahma, Vishnu, and Shiva."
+  },
+  {
+    "id": "jyotir_9",
+    "type": "jyotirlinga",
+    "title": "९. वैद्यनाथ (Baidyanath)",
+    "subtitle": "Deoghar, Jharkhand",
+    "sanskrit": "पूर्वोत्तरे प्रज्वलिकानिधाने सदा वसन्तं गिरिजासमेतम्।\nसुरासुराराधितपादपद्मं श्रीवैद्यनाथं तमहं नमामि॥",
+    "translation": "Revered as the primordial divine physician, Baidyanath cures spiritual, mental, and physical afflictions, replenishing devotees with vitality."
+  },
+  {
+    "id": "jyotir_10",
+    "type": "jyotirlinga",
+    "title": "१०. नागेश्वर (Nageshwar)",
+    "subtitle": "Dwarka, Gujarat",
+    "sanskrit": "याम्ये सदङ्गे नगरेऽतिरम्ये विभूषिताङ्गं विविधैश्च भोगैः।\nसद्भक्तिमुक्तिप्रदमीशमेकं श्रीनागनाथं शरणं प्रपद्ये॥",
+    "translation": "Nageshwar signifies Shiva's dominion over poison, serpent energies, and worldly fears, conferring spiritual steadfastness and unyielding protection."
+  },
+  {
+    "id": "jyotir_11",
+    "type": "jyotirlinga",
+    "title": "११. रामेश्वरम् (Rameshwaram)",
+    "subtitle": "Rameswaram Island, Tamil Nadu",
+    "sanskrit": "सुताम्रपर्णीजलराशियोगे निबध्य सेतुं विशिखैरसंख्यैः।\nश्रीरामचन्द्रेण समर्पितं तं रामेश्वराख्यं नियतं नमामि॥",
+    "translation": "Consecrated and worshipped by Lord Rama before building the Sethu bridge to Lanka, Rameshwaram is the sacred monument of supreme devotion and absolution."
+  },
+  {
+    "id": "jyotir_12",
+    "type": "jyotirlinga",
+    "title": "१२. घृष्णेश्वर (Grishneshwar)",
+    "subtitle": "Verul / Ellora, Maharashtra",
+    "sanskrit": "इलापुरे रम्यविशालकेऽस्मिन् समुल्लसन्तं च जगद्वरेण्यम्।\nवन्दे महोदारतरस्वभावं घृष्णेश्वराख्यं शरणं प्रपद्ये॥",
+    "translation": "The twelfth Jyotirlinga, situated near the rock-cut Ellora temples, represents Shiva's boundless mercy in fulfilling the heartfelt prayers of pious devotees."
+  },
+  {
+    "id": "symbol_1",
+    "type": "symbolism",
+    "title": "त्रिशूल (Trishula)",
+    "subtitle": "The Sacred Trident of Supreme Will",
+    "sanskrit": "त्रिमूर्तिधारकं देवं त्रिशूलवरधारिणम्।",
+    "translation": "The three prongs of the Trishula signify mastery over the three Gunas (Sattva, Rajas, Tamas), control over the three Nadis (Ida, Pingala, Sushumna), and the cycle of creation, preservation, and dissolution."
+  },
+  {
+    "id": "symbol_2",
+    "type": "symbolism",
+    "title": "डमरू (Damru)",
+    "subtitle": "The Cosmic Sound of Creation (Nada Brahma)",
+    "sanskrit": "ननाद ढक्कां नवपञ्चवारम्।",
+    "translation": "The hourglass drum represents the primordial cosmic vibration, the Pranava Om. Its two halves signify the meeting of unmanifest spirit (Purusha) and manifest nature (Prakriti)."
+  },
+  {
+    "id": "symbol_3",
+    "type": "symbolism",
+    "title": "तीसरा नेत्र (Third Eye)",
+    "subtitle": "The Eye of Transcendental Wisdom",
+    "sanskrit": "ज्ञाननेत्राय महते त्र्यम्बकाय नमोनमः।",
+    "translation": "Positioned at the Ajna chakra, Shiva's third eye represents intuitive illumination that incinerates Kama (lust and desire), piercing through Maya (cosmic illusion)."
+  },
+  {
+    "id": "symbol_4",
+    "type": "symbolism",
+    "title": "भस्म / विभूति (Bhasma)",
+    "subtitle": "Sacred Ash of Detachment",
+    "sanskrit": "भस्मोद्धूलितदेहाय नमः शिवाय।",
+    "translation": "The sacred ash coating Shiva's body symbolizes the ultimate impermanence of all matter. It reminds the seeker to abandon ego, for all physical form returns to ash."
+  },
+  {
+    "id": "lore_1",
+    "type": "lore",
+    "title": "नीलकंठ (Neelkantha)",
+    "subtitle": "The Churning of the Ocean & Halahala",
+    "sanskrit": "गले विषं यस्य विभूतिभूषणं नमामि शम्भुं गिरिजासहायम्।",
+    "translation": "During Samudra Manthan, when lethal Halahala poison arose threatening all existence, Shiva drank it out of boundless compassion. Goddess Parvati held His throat to stop it, turning His neck blue and saving the universe."
+  },
+  {
+    "id": "lore_2",
+    "type": "lore",
+    "title": "गंगावतरण (Descent of Ganga)",
+    "subtitle": "Taming the Celestial River",
+    "sanskrit": "गङ्गातरङ्गरमणीयजटाकलापं गौरीनिरन्तरविभूषितवामभागम्।",
+    "translation": "To quench King Bhagiratha's penance without shattering the earth, Shiva caught the torrential descent of the celestial river Ganga in His matted dreadlocks, gently releasing her as seven sacred streams to bless humanity."
   }
 ]
