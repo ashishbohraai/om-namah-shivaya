@@ -24,6 +24,10 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Copy Background Image into Web Assets
+        run: |
+          cp -f splash.png www/bg.png || true
+
       - name: Install Dependencies
         run: npm install
 
