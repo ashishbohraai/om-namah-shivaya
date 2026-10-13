@@ -2,26 +2,98 @@
   {
     "id": "mantra_1",
     "type": "mantra",
-    "title": "महामृत्युंजय मंत्र",
-    "subtitle": "Maha Mrityunjaya Mantra (Rigveda)",
-    "sanskrit": "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥",
-    "translation": "We worship the three-eyed Lord Shiva, fragrant and nourishing all beings. May He liberate us from death and worldly bondage into immortality, just as a ripe cucumber is gently detached from its vine."
+    "title": "१. पञ्चाक्षर मंत्र (Panchakshara)",
+    "subtitle": "Source: Yajurveda (Taittiriya Samhita)",
+    "sanskrit": "ॐ नमः शिवाय॥",
+    "translation": "Om, I bow to Lord Shiva, the embodiment of auspiciousness, pure consciousness, and supreme truth."
   },
   {
     "id": "mantra_2",
     "type": "mantra",
-    "title": "शिव पञ्चाक्षर स्तोत्रम्",
-    "subtitle": "Panchakshara Stotram • Adi Shankaracharya",
-    "sanskrit": "नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय।\nनित्याय शुद्धाय दिगम्बराय तस्मै नकाराय नमः शिवाय॥",
-    "translation": "Salutations to Lord Shiva, who wears the king of serpents as a garland, who has three eyes, whose body is smeared with sacred ashes, the supreme pure eternal reality represented by the first sacred syllable Na."
+    "title": "२. महामृत्युंजय मंत्र (Maha Mrityunjaya)",
+    "subtitle": "Source: Rigveda (7.59.12) & Sukla Yajurveda",
+    "sanskrit": "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥",
+    "translation": "We worship the three-eyed Lord Shiva, fragrant and nourishing all beings. May He liberate us from death and worldly bondage into immortality, just as a ripe cucumber is gently detached from its vine."
   },
   {
     "id": "mantra_3",
     "type": "mantra",
-    "title": "रुद्र गायत्री मंत्र",
-    "subtitle": "Rudra Gayatri Mantra • Taittiriya Aranyaka",
+    "title": "३. रुद्र गायत्री मंत्र (Rudra Gayatri)",
+    "subtitle": "Source: Taittiriya Aranyaka (Mahanarayana Upanishad)",
     "sanskrit": "ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि।\nतन्नो रुद्रः प्रचोदयात्॥",
-    "translation": "Om, may we realize the Supreme Being, the Great God Mahadeva. May that auspicious and fiercely transformative Lord Rudra illuminate and guide our intellect."
+    "translation": "Om, may we realize the Supreme Being, the Great God Mahadeva. May that auspicious and transformative Lord Rudra illuminate and guide our intellect."
+  },
+  {
+    "id": "mantra_4",
+    "type": "mantra",
+    "title": "४. शिव पञ्चाक्षर स्तोत्रम् (Panchakshara Stotram)",
+    "subtitle": "Source: Adi Shankaracharya",
+    "sanskrit": "नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय।\nनित्याय शुद्धाय दिगम्बराय तस्मै नकाराय नमः शिवाय॥",
+    "translation": "Salutations to Lord Shiva, who wears the king of serpents as a garland, who has three eyes, whose body is smeared with sacred ashes, the supreme pure eternal reality represented by the first sacred syllable Na."
+  },
+  {
+    "id": "mantra_5",
+    "type": "mantra",
+    "title": "५. शिव ध्यान मंत्र (Shiva Dhyana Mantra)",
+    "subtitle": "Source: Shiva Purana",
+    "sanskrit": "ध्यायेन्नित्यं महेशं रजतगिरिनिभं चारुचन्द्रावतंसं\nरत्नाकल्पोज्ज्वलाङ्गं परशुमृगवराभीतिहस्तं प्रसन्नम्।\nपद्मासीनं समन्तात् स्तुतममरगणैर्व्याघ्रकृत्तिं वसानं\nविश्वाद्यं विश्वबीजं निखिलभयहरं पञ्चवक्त्रं त्रिनेत्रम्॥",
+    "translation": "Meditate continually upon the Great Lord Mahesha, shining like a mountain of silver, adorned with the crescent moon, holding the axe, the antelope, and the mudras of boons and fearlessness, the seed and source of the entire universe."
+  },
+  {
+    "id": "mantra_6",
+    "type": "mantra",
+    "title": "६. द्वादश ज्योतिर्लिंग स्तोत्रम् (Dvadasha Jyotirlinga)",
+    "subtitle": "Source: Shiva Purana (Koti Rudra Samhita)",
+    "sanskrit": "सौराष्ट्रे सोमनाथं च श्रीशैले मल्लिकार्जुनम्।\nउज्जयिन्यां महाकालमोङ्कारममलेश्वरम्॥",
+    "translation": "Recitation invoking the supreme lights: Somnath in Saurashtra, Mallikarjuna in Srisailam, Mahakala in Ujjain, and Omkareshwar on the holy Narmada."
+  },
+  {
+    "id": "mantra_7",
+    "type": "mantra",
+    "title": "७. शिव ताण्डव स्तोत्रम् (Shiva Tandava Stotram)",
+    "subtitle": "Source: Ravana Krutam (Uttara Kanda)",
+    "sanskrit": "जटाटवीगलज्जलप्रवाहपावितस्थले गलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्।\nडमड्डमड्डमड्डमन्निनादवड्डमर्वयं चकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
+    "translation": "With His neck sanctified by the celestial river flowing through His matted hair, wearing a great serpent garland, and sounding His cosmic drum Damru, may Lord Shiva expand our spiritual well-being."
+  },
+  {
+    "id": "mantra_8",
+    "type": "mantra",
+    "title": "८. दारिद्र्य दहन स्तोत्रम् (Daridrya Dahana)",
+    "subtitle": "Source: Sage Vashistha",
+    "sanskrit": "विश्वेश्वराय नरकार्णवतारणाय कर्णामृताय शशिशेखरभूषणाय।\nकर्पूरगौरवपुषाय जटाधराय दारिद्र्यदुःखदहनाय नमः शिवाय॥",
+    "translation": "Salutations to Shiva, the Lord of the cosmos who delivers seekers from the sea of misery, who is radiant like white camphor, the destroyer of spiritual poverty and worldly distress."
+  },
+  {
+    "id": "mantra_9",
+    "type": "mantra",
+    "title": "९. कर्पूरगौरम् मंत्र (Shiva Mangala Vandana)",
+    "subtitle": "Source: Yajurveda & Bhavani Ashtakam",
+    "sanskrit": "कर्पूरगौरं करुणावतारं संसारसारम् भुजगेन्द्रहारम्।\nसदावसन्तं हृदयारविन्दे भवं भवानीसहितं नमामि॥",
+    "translation": "White as camphor, the very embodiment of compassion, the divine essence of existence, wearing the king of serpents as a garland; I bow to Shiva residing forever in the lotus of my heart together with Goddess Bhavani."
+  },
+  {
+    "id": "mantra_10",
+    "type": "mantra",
+    "title": "१०. ईशान मंत्र (Ishana Mantra)",
+    "subtitle": "Source: Taittiriya Aranyaka (Pancha Brahma Mantras)",
+    "sanskrit": "ईशानः सर्वविद्यानामीश्वरः सर्वभूतानां\nब्रह्माधिपतिर्ब्रह्मणोऽधिपतिर्ब्रह्मा शिवो मे अस्तु सदाशिवोम्॥",
+    "translation": "He is the master of all divine learning, the supreme sovereign of all living beings, and ruler of cosmic consciousness. May that Auspicious Lord Sadashiva always bestow grace upon me."
+  },
+  {
+    "id": "mantra_11",
+    "type": "mantra",
+    "title": "११. दक्षिणामूर्ति मंत्र (Dakshinamurti Mantra)",
+    "subtitle": "Source: Dakshinamurti Upanishad",
+    "sanskrit": "ॐ ओं नमो भगवते दक्षिणामूर्तये मह्यं मेधां प्रज्ञां प्रयच्छ स्वाहा॥",
+    "translation": "Om, salutations to Lord Dakshinamurti, the primordial silent preceptor. Bestow upon me supreme intellect, discriminating clarity, and spiritual enlightenment."
+  },
+  {
+    "id": "mantra_12",
+    "type": "mantra",
+    "title": "१२. शिव क्षमा प्रार्थना (Shiva Kshamaprarthana)",
+    "subtitle": "Source: Adi Shankaracharya (Shiva Aparadha Kshamapana)",
+    "sanskrit": "करचरणकृतं वाक्कायजं कर्मजं वा श्रवणनयनजं वा मानसं वापराधम्।\nविहितमविहितं वा सर्वमेतत्क्षमस्व जय जय करुणाब्धे श्रीमहादेव शम्भो॥",
+    "translation": "Forgive all shortcomings committed through actions of hands or feet, through words, sight, hearing, or thoughts, known or unknown. Glory to You, O ocean of boundless compassion, Mahadeva Shambho."
   },
   {
     "id": "jyotir_1",
