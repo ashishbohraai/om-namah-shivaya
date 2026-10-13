@@ -30,6 +30,13 @@ jobs:
       - name: Initialize Android Project
         run: |
           npx cap add android || true
+
+      - name: Generate Custom Icons & Splash Screens
+        run: |
+          npx @capacitor/assets generate --android || true
+
+      - name: Sync Android Project
+        run: |
           npx cap sync android
 
       - name: Build Debug APK with Gradle
