@@ -1,4 +1,4 @@
-name: Build Shiva App Release APK
+name: Build Shiva App APK
 
 on:
   push:
@@ -56,26 +56,15 @@ jobs:
             cp -f icon.png "$dir/ic_launcher_foreground.png"
           done
 
-      - name: Configure Release Build Signing
-        run: |
-          # Configure release buildType to sign with debug key so assembleRelease completes cleanly
-          cd android/app
-          sed -i '/buildTypes {/,/}/ { /release {/!b; :a; n; /}/!ba; a \        signingConfig signingConfigs.debug
-          }' build.gradle || true
-
-      - name: Build Release APK
+      - name: Build Debug APK
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleRelease
+          ./gradlew assembleDebug
 
-      - name: Locate & Rename Release APK
-        run: |
-          find android/app/build/outputs/apk -name "*.apk"
-          cp android/app/build/outputs/apk/release/*.apk Shiva-Devotion-Release.apk || cp android/app/build/outputs/apk/*/*.apk Shiva-Devotion-Release.apk
-
-      - name: Upload Release APK
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: Shiva-Devotion-Release-APK
-          path: Shiva-Devotion-Release.apk
+          name: Shiva-Devotion-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          
