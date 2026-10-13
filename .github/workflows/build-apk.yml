@@ -30,14 +30,21 @@ jobs:
       - name: Initialize Android Project
         run: |
           npx cap add android || true
-
-      - name: Generate Custom Icons & Splash Screens
-        run: |
-          npx @capacitor/assets generate --android || true
-
-      - name: Sync Android Project
-        run: |
           npx cap sync android
+
+      - name: Copy Custom Icons and Splash
+        run: |
+          echo "Replacing default Capacitor icons with custom icon.png..."
+          for dir in android/app/src/main/res/mipmap-*; do
+            cp -f icon.png "$dir/ic_launcher.png"
+            cp -f icon.png "$dir/ic_launcher_round.png"
+            cp -f icon.png "$dir/ic_launcher_foreground.png"
+          done
+
+          echo "Replacing splash screens with custom splash.png..."
+          for dir in android/app/src/main/res/drawable*; do
+            cp -f splash.png "$dir/splash.png" || true
+          done
 
       - name: Build Debug APK with Gradle
         run: |
