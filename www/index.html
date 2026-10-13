@@ -156,6 +156,14 @@
       border: 1px solid var(--border);
       padding: 16px;
       backdrop-filter: blur(8px);
+      position: relative;
+    }
+    .stotram-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
     }
     .stotram-title {
       font-size: 1.2rem;
@@ -165,11 +173,33 @@
     .stotram-sub {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 12px;
+    }
+    .tts-btn {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .tts-btn:active {
+      transform: scale(0.95);
+    }
+    .tts-btn.speaking {
+      background: #d4af37;
+      color: #0c0e12;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
     }
     .stotram-verse {
       white-space: pre-line;
-      line-height: 1.7;
+      line-height: 1.8;
       font-size: 0.96rem;
       background: rgba(15, 18, 23, 0.85);
       padding: 14px;
@@ -217,6 +247,7 @@
   <script>
     let beadCount = parseInt(localStorage.getItem('shiva_bead_count') || '0', 10);
     let malasCompleted = parseInt(localStorage.getItem('shiva_mala_count') || '0', 10);
+    let currentlySpeakingIndex = null;
 
     function updateCounterUI() {
       document.getElementById('count-display').innerText = beadCount;
@@ -252,6 +283,9 @@
     }
 
     function switchTab(tab) {
+      // Stop any active recitation when switching tabs
+      stopSpeech();
+
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
 
@@ -265,6 +299,8 @@
       }
     }
 
+    let stotramData = [];
+
     function loadStotrams() {
       const container = document.getElementById('stotram-container');
       if (container.children.length > 0) return;
@@ -272,10 +308,18 @@
       fetch('data/content.json')
         .then(res => res.json())
         .then(items => {
-          container.innerHTML = items.map(item => `
+          stotramData = items;
+          container.innerHTML = items.map((item, index) => `
             <div class="stotram-card">
-              <h2 class="stotram-title">${item.title}</h2>
-              <div class="stotram-sub">${item.subtitle}</div>
+              <div class="stotram-header">
+                <div>
+                  <h2 class="stotram-title">${item.title}</h2>
+                  <div class="stotram-sub">${item.subtitle}</div>
+                </div>
+                <button class="tts-btn" id="tts-btn-${index}" onclick="toggleSpeech(${index})">
+                  🔊 Listen
+                </button>
+              </div>
               <div class="stotram-verse">${item.sanskrit}</div>
               <div class="stotram-trans">${item.translation}</div>
             </div>
@@ -284,6 +328,65 @@
         .catch(err => {
           container.innerHTML = '<p style="text-align:center; color: #888; padding: 20px;">Unable to load stotrams.</p>';
         });
+    }
+
+    function toggleSpeech(index) {
+      if (!('speechSynthesis' in window)) {
+        alert("Text-to-speech is not supported on this device.");
+        return;
+      }
+
+      // If currently speaking this mantra, stop it
+      if (currentlySpeakingIndex === index) {
+        stopSpeech();
+        return;
+      }
+
+      // Stop previous recitation if any
+      stopSpeech();
+
+      const text = stotramData[index].sanskrit;
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      // Set Sanskrit/Hindi voice locale and natural pacing
+      utterance.lang = 'hi-IN';
+      utterance.rate = 0.85; // Slightly slower, calm chanting pace
+      utterance.pitch = 0.95;
+
+      const btn = document.getElementById(`tts-btn-${index}`);
+      if (btn) {
+        btn.innerText = '⏹ Stop';
+        btn.classList.add('speaking');
+      }
+
+      currentlySpeakingIndex = index;
+
+      utterance.onend = () => {
+        resetTTSButtons();
+        currentlySpeakingIndex = null;
+      };
+
+      utterance.onerror = () => {
+        resetTTSButtons();
+        currentlySpeakingIndex = null;
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeech() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      resetTTSButtons();
+      currentlySpeakingIndex = null;
+    }
+
+    function resetTTSButtons() {
+      document.querySelectorAll('.tts-btn').forEach(btn => {
+        btn.innerText = '🔊 Listen';
+        btn.classList.remove('speaking');
+      });
     }
   </script>
 </body>
