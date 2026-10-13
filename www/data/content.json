@@ -155,7 +155,7 @@
     "id": "lore_1",
     "type": "lore",
     "title": "१. नीलकंठ (Neelkantha)",
-    "subtitle": "The Churning of the Ocean & Halahala",
+    "subtitle": "Source: Shiva Purana (Rudra Samhita) & Bhagavata Purana (Canto 8)",
     "sanskrit": "गले विषं यस्य विभूतिभूषणं नमामि शम्भुं गिरिजासहायम्।",
     "translation": "During Samudra Manthan, when lethal Halahala poison arose threatening all existence, Shiva consumed it out of boundless compassion. Goddess Parvati held His throat to halt its spread, turning His neck blue and preserving creation."
   },
@@ -163,7 +163,7 @@
     "id": "lore_2",
     "type": "lore",
     "title": "२. गंगावतरण (Descent of Ganga)",
-    "subtitle": "Taming the Celestial River",
+    "subtitle": "Source: Valmiki Ramayana (Balakanda) & Shiva Purana",
     "sanskrit": "गङ्गातरङ्गरमणीयजटाकलापं गौरीनिरन्तरविभूषितवामभागम्।",
     "translation": "To fulfill King Bhagiratha's tapasya without shattering the earth beneath the torrential celestial river Ganga, Shiva caught her turbulent torrent in His matted locks, releasing her as peaceful, sanctifying rivers."
   },
@@ -171,7 +171,7 @@
     "id": "lore_3",
     "type": "lore",
     "title": "३. आनन्द ताण्डव (Ananda Tandava)",
-    "subtitle": "The Cosmic Dance of Chidambaram",
+    "subtitle": "Source: Chidambara Mahatmya & Natya Shastra",
     "sanskrit": "डमड्डमड्डमड्डमन्निनादवड्डमर्वयं चकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
     "translation": "As Nataraja, Shiva performs the Ananda Tandava—the eternal dance of five cosmic actions: creation, sustenance, dissolution, concealment, and grace. Beneath His foot, He subdues the dwarf Apasmara, signifying the defeat of spiritual ignorance."
   },
@@ -179,7 +179,7 @@
     "id": "lore_4",
     "type": "lore",
     "title": "४. त्रिपुर संहार (Tripurantaka)",
-    "subtitle": "The Annihilation of the Three Citadels",
+    "subtitle": "Source: Shiva Purana (Yuddha Khanda) & Mahabharata (Drona Parva)",
     "sanskrit": "त्रिपुरदहनाय धनुर्धराय पिनाकिने नमः शिवाय।",
     "translation": "When three demon brothers built impenetrable flying fortresses of gold, silver, and iron, Shiva made Earth His chariot, Mount Meru His bow, and Lord Vishnu His arrow, annihilating all three realms in a single aligned shot of unified will."
   },
@@ -187,7 +187,7 @@
     "id": "lore_5",
     "type": "lore",
     "title": "५. कामदहन (The Incineration of Kama)",
-    "subtitle": "Conquest Over Worldly Desire",
+    "subtitle": "Source: Kalidasa's Kumarasambhava & Shiva Purana",
     "sanskrit": "दग्धकामोऽपि कामदः सर्वकामावाप्तिहेतुः।",
     "translation": "When Kamadeva shot flower-arrows to disturb Shiva's profound yogic penance, Shiva opened His third eye of pristine awakening, instantly reducing Kama to ash to demonstrate that divine union arises from consciousness, not lust."
   },
@@ -195,7 +195,7 @@
     "id": "lore_6",
     "type": "lore",
     "title": "६. लिङ्गोद्भव (Lingodbhava)",
-    "subtitle": "The Infinite Column of Cosmic Light",
+    "subtitle": "Source: Linga Purana & Shiva Purana (Vidyeshvara Samhita)",
     "sanskrit": "अनादिमध्यान्तरूपं ज्योतिर्लिङ्गं नमाम्यहम्।",
     "translation": "When Brahma and Vishnu contested primacy, Shiva manifested as a boundless pillar of flaming light with no root or crown. Acknowledging His uncontainable infinity, both realized the supreme formless truth commemorated on Maha Shivaratri."
   },
@@ -203,7 +203,7 @@
     "id": "lore_7",
     "type": "lore",
     "title": "७. कालसंहर मूर्ति (Markandeya's Deliverance)",
-    "subtitle": "Conqueror of Death and Protector of Bhakti",
+    "subtitle": "Source: Markandeya Purana & Skanda Purana",
     "sanskrit": "मृत्युञ्जयाय रुद्राय नीलकण्ठाय शम्भवे।\nअमृतेशाय शर्वाय महादेवाय ते नमः॥",
     "translation": "Destined to perish at age sixteen, the young sage Markandeya embraced the Shiva Linga in complete devotion. When Yama arrived with his noose, Shiva burst forth from the linga, repelled death itself, and blessed Markandeya with eternal youth."
   },
@@ -211,7 +211,7 @@
     "id": "lore_8",
     "type": "lore",
     "title": "८. दक्ष यज्ञ विलोप (Daksha Yajna & Virabhadra)",
-    "subtitle": "The Fall of Spiritual Pride",
+    "subtitle": "Source: Bhagavata Purana (Canto 4) & Vayu Purana",
     "sanskrit": "दक्षयज्ञविनाशाय वीरभद्राय ते नमः।",
     "translation": "When King Daksha insulted Shiva during a grand sacrifice, leading Sati to immolate herself in yogic fire, an aggrieved Shiva plucked a dreadlock and summoned Virabhadra. The ritual was dismantled, crushing arrogant ego and reaffirming supreme cosmic order."
   },
@@ -219,15 +219,15 @@
     "id": "lore_9",
     "type": "lore",
     "title": "९. अर्धनारीश्वर (Ardhanarishvara)",
-    "subtitle": "The Inseparable Cosmic Polarity",
-    "sanskrit": "चाpropertyम्पेयगौरार्धशरीरकायै कर्पूरगौरार्धशरीरकाय।\nधम्मिल्लकायै च जटाधराय नमः शिवायै च नमः शिवाय॥",
+    "subtitle": "Source: Shiva Purana & Ardhanarishvara Stotram (Adi Shankaracharya)",
+    "sanskrit": "चाम्पेयगौरार्धशरीरकायै कर्पूरगौरार्धशरीरकाय।\nधम्मिल्लकायै च जटाधराय नमः शिवायै च नमः शिवाय॥",
     "translation": "Shiva revealed Himself as half-male and half-female alongside Parvati, manifesting that Purusha (pure consciousness) and Prakriti (creative dynamic force) are indivisible wholes essential to the rhythm of reality."
   },
   {
     "id": "lore_10",
     "type": "lore",
     "title": "१०. शरभ अवतार (Sharabha Avatar)",
-    "subtitle": "Pacifying the Fierce Divine Energy",
+    "subtitle": "Source: Sharabha Upanishad & Linga Purana",
     "sanskrit": "पक्षिराजाय देवाय शरभाय नमो नमः।",
     "translation": "Following the vanquishing of Hiranyakashipu, Narasimha's blazing fury remained unquenched. Shiva manifested as Sharabha—an eight-legged winged creature—to embrace and pacify Narasimha, restoring gentle balance across the cosmos."
   },
@@ -235,7 +235,7 @@
     "id": "lore_11",
     "type": "lore",
     "title": "११. दक्षिणमूर्ति (Dakshinamurti)",
-    "subtitle": "The Silent Primordial Guru",
+    "subtitle": "Source: Dakshinamurti Upanishad & Adi Shankaracharya",
     "sanskrit": "गुरवे सर्वलोकानां भिषजे भवरोगिणाम्।\nनिधये सर्वविद्यानां दक्षिणामूर्तये नमः॥",
     "translation": "Facing south in profound stillness beneath a banyan tree, the youthful Shiva instructs elderly rishis through silent exposition (Mouna Vyakhya), instantly extinguishing all mental doubts through direct transmission of self-realization."
   },
@@ -243,8 +243,48 @@
     "id": "lore_12",
     "type": "lore",
     "title": "१२. रावणानुग्रह (Ravananugraha)",
-    "subtitle": "The Humbling of Ravana & Shiva Tandava Stotram",
+    "subtitle": "Source: Shiva Purana (Kotirudra Samhita) & Uttara Kanda",
     "sanskrit": "जटाकटाहसम्भ्रमभ्रमन्निलिम्पनिर्झरी विलोलवीचिवल्लरीविराजमानमूर्धनि।",
     "translation": "When the mighty king Ravana attempted to uproot Mount Kailash in hubris, Shiva pinned the mountain with His toe. Recognizing the supreme power, Ravana fashioned a veena from his own arm and sang the Shiva Tandava Stotram, earning Shiva’s profound grace and the divine sword Chandrahas."
+  },
+  {
+    "id": "book_1",
+    "type": "book",
+    "title": "शिव महापुराण (Shiva Purana)",
+    "subtitle": "Gita Press, Gorakhpur • Classical Scripture",
+    "sanskrit": "सर्ववेदान्तसारं हि शिवपुराणमनुत्तमम्।",
+    "translation": "The definitive canonical scripture containing comprehensive narrations of Lord Shiva's manifestations, cosmology, sacred lingas, devotional vows, and the spiritual path of surrender. Recommended for traditional, authentic scriptural study."
+  },
+  {
+    "id": "book_2",
+    "type": "book",
+    "title": "Shiva Sutras: The Supreme Awakening",
+    "subtitle": "Commentary by Swami Lakshmanjoo • Kashmir Shaivism",
+    "sanskrit": "चैतन्यमात्मा। ज्ञानं बन्धः।",
+    "translation": "The foundational treatise of non-dual Kashmir Shaivism revealing that individual consciousness is identical to universal supreme reality. Recommended for seekers drawn to profound meditation, non-dual philosophy, and inner contemplation."
+  },
+  {
+    "id": "book_3",
+    "type": "book",
+    "title": "The Presence of Siva",
+    "subtitle": "By Stella Kramrisch • Art, Archetype & Metaphysics",
+    "sanskrit": "शिवमद्वैतं चतुर्थं मन्यन्ते स आत्मा स विज्ञेयः।",
+    "translation": "A celebrated masterwork exploring the primordial roots, paradoxical nature, and deep sacred symbolism of Shiva through temple sculpture, Vedic hymns, and ancient Indian art. Recommended for readers interested in profound mythological and philosophical analysis."
+  },
+  {
+    "id": "book_4",
+    "type": "book",
+    "title": "विज्ञान भैरव तन्त्र (Vijnana Bhairava Tantra)",
+    "subtitle": "Commentary by Jaideva Singh / Swami Satyananda Saraswati",
+    "sanskrit": "धरणासु प्रविष्टासु प्रत्यक्षं भासते शिवः।",
+    "translation": "An ancient experiential guide offering 112 classical meditation techniques (Dharanas) revealed by Lord Bhairava to Goddess Bhairavi. Ideal for practitioners of breath awareness, sensory stillness, and contemplative mindfulness."
+  },
+  {
+    "id": "book_5",
+    "type": "book",
+    "title": "Shiva: The Wild and the Way",
+    "subtitle": "By Devdutt Pattanaik • Mythological Overview",
+    "sanskrit": "अन्तः शिवः बहिः शम्भुः।",
+    "translation": "An accessible, thematic guide exploring Shiva as both the detached hermit and the loving householder, interpreting cultural symbols and stories for contemporary readers."
   }
 ]
