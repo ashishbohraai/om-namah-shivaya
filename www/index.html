@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Om Namah Shivaya</title>
-  <script src="capacitor.js"></script>
   <style>
     :root {
       --bg: #0c0e12;
-      --card: rgba(22, 26, 34, 0.85);
+      --card: rgba(22, 26, 34, 0.88);
       --gold: #d4af37;
-      --gold-dim: #997e28;
       --text: #f0f2f5;
       --text-muted: #a0abb6;
       --border: rgba(212, 175, 55, 0.25);
@@ -241,7 +239,7 @@
   <!-- Stotram Viewer Tab -->
   <section id="stotram-view" class="view">
     <div class="stotram-list" id="stotram-container">
-      <!-- Loaded dynamically from data/content.json -->
+      <p style="text-align: center; color: #888; padding: 20px;">Loading sacred stotrams...</p>
     </div>
   </section>
 
@@ -252,8 +250,10 @@
     let stotramData = [];
 
     function updateCounterUI() {
-      document.getElementById('count-display').innerText = beadCount;
-      document.getElementById('round-display').innerText = `Mala Rounds Completed: ${malasCompleted}`;
+      const countEl = document.getElementById('count-display');
+      const roundEl = document.getElementById('round-display');
+      if (countEl) countEl.innerText = beadCount;
+      if (roundEl) roundEl.innerText = `Mala Rounds Completed: ${malasCompleted}`;
     }
     updateCounterUI();
 
@@ -287,22 +287,28 @@
     function switchTab(tab) {
       stopSpeech();
 
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      const btnMala = document.getElementById('tab-btn-mala');
+      const btnStotram = document.getElementById('tab-btn-stotram');
+      const viewMala = document.getElementById('mala-view');
+      const viewStotram = document.getElementById('stotram-view');
 
       if (tab === 'mala') {
-        document.getElementById('tab-btn-mala').classList.add('active');
-        document.getElementById('mala-view').classList.add('active');
+        btnMala.classList.add('active');
+        btnStotram.classList.remove('active');
+        viewMala.classList.add('active');
+        viewStotram.classList.remove('active');
       } else {
-        document.getElementById('tab-btn-stotram').classList.add('active');
-        document.getElementById('stotram-view').classList.add('active');
+        btnStotram.classList.add('active');
+        btnMala.classList.remove('active');
+        viewStotram.classList.add('active');
+        viewMala.classList.remove('active');
         loadStotrams();
       }
     }
 
     function loadStotrams() {
       const container = document.getElementById('stotram-container');
-      if (container.children.length > 0) return;
+      if (stotramData && stotramData.length > 0) return;
 
       fetch('data/content.json')
         .then(res => res.json())
@@ -325,15 +331,9 @@
           `).join('');
         })
         .catch(err => {
-          container.innerHTML = '<p style="text-align:center; color: #888; padding: 20px;">Unable to load stotrams.</p>';
+          console.error("Content loading failed:", err);
+          container.innerHTML = '<p style="text-align:center; color: #a0abb6; padding: 20px;">Unable to load stotrams.</p>';
         });
-    }
-
-    function getTTSPlugin() {
-      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
-        return window.Capacitor.Plugins.TextToSpeech;
-      }
-      return null;
     }
 
     async function toggleSpeech(index) {
@@ -354,12 +354,10 @@
       }
       currentlySpeakingIndex = index;
 
-      const TTS = getTTSPlugin();
-
-      // Attempt Native Capacitor Plugin
-      if (TTS) {
+      // Call native Android TTS bridge
+      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
         try {
-          await TTS.speak({
+          await window.Capacitor.Plugins.TextToSpeech.speak({
             text: cleanText,
             lang: 'hi-IN',
             rate: 0.85,
@@ -370,47 +368,32 @@
           resetTTSButtons();
           currentlySpeakingIndex = null;
           return;
-        } catch (err) {
-          console.warn("Capacitor TTS fallback:", err);
+        } catch (e) {
+          console.warn("Capacitor speak error", e);
         }
       }
 
-      // Fallback: Web Speech API
+      // Android Web Speech fallback
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(cleanText);
         utterance.lang = 'hi-IN';
         utterance.rate = 0.85;
 
-        const voices = window.speechSynthesis.getVoices();
-        const hiVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('IN'));
-        if (hiVoice) {
-          utterance.voice = hiVoice;
-        }
-
-        utterance.onend = () => {
-          resetTTSButtons();
-          currentlySpeakingIndex = null;
-        };
-
-        utterance.onerror = () => {
-          resetTTSButtons();
-          currentlySpeakingIndex = null;
-        };
-
+        utterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+        utterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
         window.speechSynthesis.speak(utterance);
       } else {
-        alert("Please ensure Google Speech Services / Text-to-Speech is enabled in device settings.");
+        alert("Text-to-speech could not be played.");
         resetTTSButtons();
         currentlySpeakingIndex = null;
       }
     }
 
     async function stopSpeech() {
-      const TTS = getTTSPlugin();
-      if (TTS) {
+      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
         try {
-          await TTS.stop();
+          await window.Capacitor.Plugins.TextToSpeech.stop();
         } catch (e) {}
       }
       if ('speechSynthesis' in window) {
@@ -426,91 +409,6 @@
         btn.classList.remove('speaking');
       });
     }
-
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = () => {
-        window.speechSynthesis.getVoices();
-      };
-    }
-    // Direct bridge to native Capacitor plugin
-    async function nativeTTS(action, options = {}) {
-      if (window.Capacitor) {
-        // 1. Standard plugin lookup
-        if (window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech && window.Capacitor.Plugins.TextToSpeech[action]) {
-          return await window.Capacitor.Plugins.TextToSpeech[action](options);
-        }
-        // 2. Direct native bridge invocation for unbundled community plugins
-        if (typeof window.Capacitor.nativePromise === 'function') {
-          return await window.Capacitor.nativePromise('TextToSpeech', action, options);
-        }
-      }
-      throw new Error("Native Capacitor TTS bridge unavailable");
-    }
-
-    async function toggleSpeech(index) {
-      if (currentlySpeakingIndex === index) {
-        await stopSpeech();
-        return;
-      }
-
-      await stopSpeech();
-
-      const rawText = stotramData[index].sanskrit;
-      // Strip dandas and normalize spacing for natural Sanskrit cadence
-      const cleanText = rawText.replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
-
-      const btn = document.getElementById(`tts-btn-${index}`);
-      if (btn) {
-        btn.innerText = '⏹ Stop';
-        btn.classList.add('speaking');
-      }
-      currentlySpeakingIndex = index;
-
-      try {
-        // Call Android Native TTS directly via Capacitor bridge
-        await nativeTTS('speak', {
-          text: cleanText,
-          lang: 'hi-IN',
-          rate: 0.85,
-          pitch: 1.0,
-          volume: 1.0,
-          category: 'ambient'
-        });
-      } catch (nativeErr) {
-        console.warn("Capacitor Native bridge call failed, trying Web Speech:", nativeErr);
-
-        if ('speechSynthesis' in window) {
-          window.speechSynthesis.cancel();
-          const utterance = new SpeechSynthesisUtterance(cleanText);
-          utterance.lang = 'hi-IN';
-          utterance.rate = 0.85;
-
-          const voices = window.speechSynthesis.getVoices();
-          const hiVoice = voices.find(v => v.lang && (v.lang.includes('hi') || v.lang.includes('IN')));
-          if (hiVoice) utterance.voice = hiVoice;
-
-          utterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-          utterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-          window.speechSynthesis.speak(utterance);
-          return;
-        } else {
-          alert("Native speech service could not be initialized on this device.");
-        }
-      } finally {
-        resetTTSButtons();
-        currentlySpeakingIndex = null;
-      }
-    }
-
-    async function stopSpeech() {
-      try {
-        await nativeTTS('stop');
-      } catch (e) {}
-
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-      resetTTSButtons();
-      currentlySpeakingIndex = null;
-    }
-    
+  </script>
+</body>
+</html>
