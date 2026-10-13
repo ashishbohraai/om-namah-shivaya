@@ -1,4 +1,4 @@
-name: Build Shiva App APK
+name: Build Shiva App Release APK
 
 on:
   push:
@@ -56,15 +56,45 @@ jobs:
             cp -f icon.png "$dir/ic_launcher_foreground.png"
           done
 
-      - name: Build Debug APK with Gradle
+      - name: Build Unsigned Release APK
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleRelease
 
-      - name: Upload APK Artifact
+      - name: Generate Keystore & Sign Release APK
+        run: |
+          # 1. Create a dedicated release keystore
+          keytool -genkeypair -v \
+            -keystore my-release-key.jks \
+            -alias shiva-release-key \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -storepass "ShivaAppSecretPass108" \
+            -keypass "ShivaAppSecretPass108" \
+            -dname "CN=Shiva Devotion, OU=Devotion, O=Shiva App, L=Mumbai, ST=Maharashtra, C=IN"
+
+          # 2. Locate Android build-tools zipalign and apksigner
+          BUILD_TOOLS_PATH=$(find $ANDROID_HOME/build-tools -maxdepth 1 -mindepth 1 | sort -V | tail -n 1)
+          
+          # 3. Align the unsigned release APK
+          $BUILD_TOOLS_PATH/zipalign -v -p 4 \
+            android/app/build/outputs/apk/release/app-release-unsigned.apk \
+            Shiva-Release-aligned.apk
+
+          # 4. Sign the APK with the newly generated key
+          $BUILD_TOOLS_PATH/apksigner sign \
+            --ks my-release-key.jks \
+            --ks-pass pass:"ShivaAppSecretPass108" \
+            --ks-key-alias shiva-release-key \
+            --key-pass pass:"ShivaAppSecretPass108" \
+            --out Shiva-Devotion-Release.apk \
+            Shiva-Release-aligned.apk
+
+      - name: Upload Signed Release APK
         uses: actions/upload-artifact@v4
         with:
-          name: Shiva-Devotion-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: Shiva-Devotion-Release-APK
+          path: Shiva-Devotion-Release.apk
           compression-level: 0
