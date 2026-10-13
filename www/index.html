@@ -248,6 +248,7 @@
     let beadCount = parseInt(localStorage.getItem('shiva_bead_count') || '0', 10);
     let malasCompleted = parseInt(localStorage.getItem('shiva_mala_count') || '0', 10);
     let currentlySpeakingIndex = null;
+    let stotramData = [];
 
     function updateCounterUI() {
       document.getElementById('count-display').innerText = beadCount;
@@ -283,7 +284,6 @@
     }
 
     function switchTab(tab) {
-      // Stop any active recitation when switching tabs
       stopSpeech();
 
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -298,8 +298,6 @@
         loadStotrams();
       }
     }
-
-    let stotramData = [];
 
     function loadStotrams() {
       const container = document.getElementById('stotram-container');
@@ -330,51 +328,74 @@
         });
     }
 
-    function toggleSpeech(index) {
-      if (!('speechSynthesis' in window)) {
-        alert("Text-to-speech is not supported on this device.");
-        return;
+    function getTTSPlugin() {
+      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
+        return window.Capacitor.Plugins.TextToSpeech;
       }
-
-      // If currently speaking this mantra, stop it
-      if (currentlySpeakingIndex === index) {
-        stopSpeech();
-        return;
-      }
-
-      // Stop previous recitation if any
-      stopSpeech();
-
-      const text = stotramData[index].sanskrit;
-      const utterance = new SpeechSynthesisUtterance(text);
-
-      // Set Sanskrit/Hindi voice locale and natural pacing
-      utterance.lang = 'hi-IN';
-      utterance.rate = 0.85; // Slightly slower, calm chanting pace
-      utterance.pitch = 0.95;
-
-      const btn = document.getElementById(`tts-btn-${index}`);
-      if (btn) {
-        btn.innerText = '⏹ Stop';
-        btn.classList.add('speaking');
-      }
-
-      currentlySpeakingIndex = index;
-
-      utterance.onend = () => {
-        resetTTSButtons();
-        currentlySpeakingIndex = null;
-      };
-
-      utterance.onerror = () => {
-        resetTTSButtons();
-        currentlySpeakingIndex = null;
-      };
-
-      window.speechSynthesis.speak(utterance);
+      return null;
     }
 
-    function stopSpeech() {
+    async function toggleSpeech(index) {
+      const TTS = getTTSPlugin();
+
+      if (currentlySpeakingIndex === index) {
+        await stopSpeech();
+        return;
+      }
+
+      await stopSpeech();
+
+      const text = stotramData[index].sanskrit;
+      const btn = document.getElementById(`tts-btn-${index}`);
+
+      if (TTS) {
+        try {
+          if (btn) {
+            btn.innerText = '⏹ Stop';
+            btn.classList.add('speaking');
+          }
+          currentlySpeakingIndex = index;
+
+          await TTS.speak({
+            text: text,
+            lang: 'hi-IN',
+            rate: 0.85,
+            pitch: 1.0,
+            volume: 1.0,
+            category: 'ambient'
+          });
+
+          resetTTSButtons();
+          currentlySpeakingIndex = null;
+        } catch (e) {
+          console.error(e);
+          resetTTSButtons();
+          currentlySpeakingIndex = null;
+        }
+      } else {
+        if ('speechSynthesis' in window) {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = 'hi-IN';
+          utterance.rate = 0.85;
+          if (btn) {
+            btn.innerText = '⏹ Stop';
+            btn.classList.add('speaking');
+          }
+          currentlySpeakingIndex = index;
+          utterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+          utterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+          window.speechSynthesis.speak(utterance);
+        }
+      }
+    }
+
+    async function stopSpeech() {
+      const TTS = getTTSPlugin();
+      if (TTS) {
+        try {
+          await TTS.stop();
+        } catch (e) {}
+      }
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
