@@ -1,16 +1,15 @@
 {
-  "name": "shiva-app",
+  "name": "om-namah-shivaya",
   "version": "1.0.0",
-  "description": "Lord Shiva Devotional & Japamala App",
+  "description": "Lord Shiva Devotional App and Japamala",
+  "main": "index.js",
   "scripts": {
-    "build": "echo 'Web assets ready in www'"
+    "build": "npx cap sync android"
   },
   "dependencies": {
-    "@capacitor/core": "^6.0.0",
-    "@capacitor/android": "^6.0.0"
-  },
-  "devDependencies": {
+    "@capacitor/android": "^6.0.0",
     "@capacitor/cli": "^6.0.0",
-    "@capacitor/assets": "^3.0.5"
+    "@capacitor/core": "^6.0.0",
+    "@capacitor-community/text-to-speech": "^6.0.0"
   }
 }
