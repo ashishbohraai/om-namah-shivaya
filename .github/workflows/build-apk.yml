@@ -24,14 +24,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Copy Background Image into Web Assets
+      - name: Prepare Web Assets
         run: |
           cp -f splash.png www/bg.png || true
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install
 
-      - name: Initialize Android Project
+      - name: Setup Android Platform & Sync Plugins
         run: |
           npx cap add android || true
           npx cap sync android
@@ -46,7 +47,7 @@ jobs:
             sed -i '/<\/manifest>/i \    <queries>\n        <intent>\n            <action android:name="android.intent.action.TTS_SERVICE" />\n        </intent>\n    </queries>' "$MANIFEST"
           fi
 
-      - name: Configure Custom Icons
+      - name: Configure Custom App Icons
         run: |
           rm -rf android/app/src/main/res/mipmap-anydpi-v26
           for dir in android/app/src/main/res/mipmap-*; do
