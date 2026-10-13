@@ -281,6 +281,7 @@
       <button class="filter-chip" onclick="setFilter('jyotirlinga', this)">🛕 Jyotirlingas</button>
       <button class="filter-chip" onclick="setFilter('symbolism', this)">🔱 Sacred Symbols</button>
       <button class="filter-chip" onclick="setFilter('lore', this)">📜 Divine Lore</button>
+      <button class="filter-chip" onclick="setFilter('book', this)">📚 Sacred Books</button>
     </div>
 
     <div class="content-list" id="content-container">
@@ -381,7 +382,8 @@
         mantra: { icon: '📿', label: 'Mantra' },
         jyotirlinga: { icon: '🛕', label: 'Jyotirlinga' },
         symbolism: { icon: '🔱', label: 'Sacred Symbol' },
-        lore: { icon: '📜', label: 'Divine Lore' }
+        lore: { icon: '📜', label: 'Divine Lore' },
+        book: { icon: '📚', label: 'Sacred Book' }
       };
 
       container.innerHTML = filtered.map(item => {
