@@ -56,31 +56,39 @@ jobs:
             cp -f icon.png "$dir/ic_launcher_foreground.png"
           done
 
-      - name: Setup Release Keystore & Gradle Signing
+      - name: Build Unsigned Release APK
         run: |
-          cd android/app
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleRelease
+
+      - name: Generate Keystore
+        run: |
           keytool -genkeypair -v \
-            -keystore my-release-key.jks \
-            -alias shiva-key \
+            -keystore release.jks \
+            -alias shivakey \
             -keyalg RSA \
             -keysize 2048 \
             -validity 10000 \
             -storepass "ShivaPass108" \
             -keypass "ShivaPass108" \
             -dname "CN=Shiva Devotion, OU=Devotion, O=Shiva App, L=Mumbai, ST=Maharashtra, C=IN"
+          
+          # Convert keystore to base64 for the signing action
+          echo "KEYSTORE_BASE64=$(base64 -w 0 release.jks)" >> $GITHUB_ENV
 
-          # Configure build.gradle to use the keystore for release builds
-          sed -i '/buildTypes {/i \    signingConfigs {\n        release {\n            storeFile file("my-release-key.jks")\n            storePassword "ShivaPass108"\n            keyAlias "shiva-key"\n            keyPassword "ShivaPass108"\n        }\n    }' build.gradle
-          sed -i '/release {/a \            signingConfig signingConfigs.release' build.gradle
-
-      - name: Build Signed Release APK
-        run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleRelease
+      - name: Sign Android Release APK
+        uses: r0adkll/sign-android-release@v1
+        id: sign_app
+        with:
+          releaseDirectory: android/app/build/outputs/apk/release
+          signingKey: ${{ env.KEYSTORE_BASE64 }}
+          keyStorePassword: "ShivaPass108"
+          alias: "shivakey"
+          keyPassword: "ShivaPass108"
 
       - name: Upload Signed Release APK
         uses: actions/upload-artifact@v4
         with:
           name: Shiva-Devotion-Release-APK
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: ${{ steps.sign_app.outputs.signedReleaseFile }}
