@@ -33,7 +33,7 @@
       overflow-x: hidden;
     }
     header {
-      padding: 24px 16px 12px;
+      padding: 24px 16px 10px;
       text-align: center;
       background: linear-gradient(180deg, rgba(212,175,55,0.15) 0%, transparent 100%);
     }
@@ -52,13 +52,13 @@
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin: 16px 0;
+      margin: 14px 0 8px;
     }
     .tab-btn {
       background: var(--card);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 8px 20px;
+      padding: 8px 18px;
       border-radius: 24px;
       font-size: 0.88rem;
       cursor: pointer;
@@ -141,36 +141,73 @@
       cursor: pointer;
     }
 
-    /* Stotrams Section */
-    .stotram-list {
+    /* Category Filter Chips */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      width: 100%;
+      max-width: 550px;
+      padding: 8px 4px 14px;
+      scrollbar-width: none;
+    }
+    .filter-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .filter-chip {
+      background: rgba(22, 26, 34, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 0.76rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-chip.active {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Content Cards */
+    .content-list {
       width: 100%;
       max-width: 550px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
-    .stotram-card {
+    .content-card {
       background: var(--card);
       border-radius: 14px;
       border: 1px solid var(--border);
       padding: 16px;
       backdrop-filter: blur(8px);
-      position: relative;
     }
-    .stotram-header {
+    .card-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 10px;
       margin-bottom: 8px;
     }
-    .stotram-title {
-      font-size: 1.2rem;
+    .card-badge {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .card-title {
+      font-size: 1.15rem;
       color: var(--gold);
       margin-bottom: 2px;
     }
-    .stotram-sub {
-      font-size: 0.85rem;
+    .card-sub {
+      font-size: 0.82rem;
       color: var(--text-muted);
     }
     .tts-btn {
@@ -196,17 +233,17 @@
       color: #0c0e12;
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
     }
-    .stotram-verse {
+    .card-verse {
       white-space: pre-line;
       line-height: 1.8;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       background: rgba(15, 18, 23, 0.85);
-      padding: 14px;
+      padding: 12px;
       border-radius: 8px;
       border-left: 3px solid var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    .stotram-trans {
+    .card-trans {
       font-size: 0.86rem;
       color: var(--text-muted);
       line-height: 1.5;
@@ -217,10 +254,10 @@
 
   <header>
     <h1>ॐ नमः शिवाय</h1>
-    <div class="header-sub">Lord Shiva Devotion & Japamala</div>
+    <div class="header-sub">Lord Shiva Devotion & Encyclopedia</div>
     <div class="nav-tabs">
-      <button class="tab-btn active" id="tab-btn-mala" onclick="switchTab('mala')">Japamala</button>
-      <button class="tab-btn" id="tab-btn-stotram" onclick="switchTab('stotram')">Stotrams & Mantras</button>
+      <button class="tab-btn active" id="tab-btn-mala" onclick="switchTab('mala')">📿 Japamala</button>
+      <button class="tab-btn" id="tab-btn-encyclopedia" onclick="switchTab('encyclopedia')">🔱 Divine Wisdom</button>
     </div>
   </header>
 
@@ -236,18 +273,27 @@
     </div>
   </section>
 
-  <!-- Stotram Viewer Tab -->
-  <section id="stotram-view" class="view">
-    <div class="stotram-list" id="stotram-container">
-      <p style="text-align: center; color: #888; padding: 20px;">Loading sacred stotrams...</p>
+  <!-- Encyclopedia & Content Tab -->
+  <section id="encyclopedia-view" class="view">
+    <div class="filter-bar">
+      <button class="filter-chip active" onclick="setFilter('all', this)">✨ All</button>
+      <button class="filter-chip" onclick="setFilter('mantra', this)">📿 Mantras</button>
+      <button class="filter-chip" onclick="setFilter('jyotirlinga', this)">🛕 Jyotirlingas</button>
+      <button class="filter-chip" onclick="setFilter('symbolism', this)">🔱 Sacred Symbols</button>
+      <button class="filter-chip" onclick="setFilter('lore', this)">📜 Divine Lore</button>
+    </div>
+
+    <div class="content-list" id="content-container">
+      <p style="text-align: center; color: #888; padding: 20px;">Loading sacred content...</p>
     </div>
   </section>
 
   <script>
     let beadCount = parseInt(localStorage.getItem('shiva_bead_count') || '0', 10);
     let malasCompleted = parseInt(localStorage.getItem('shiva_mala_count') || '0', 10);
-    let currentlySpeakingIndex = null;
-    let stotramData = [];
+    let currentlySpeakingId = null;
+    let allContentData = [];
+    let currentFilter = 'all';
 
     function updateCounterUI() {
       const countEl = document.getElementById('count-display');
@@ -259,16 +305,12 @@
 
     function tapBead() {
       beadCount++;
-      if (navigator.vibrate) {
-        navigator.vibrate(40);
-      }
+      if (navigator.vibrate) navigator.vibrate(40);
 
       if (beadCount >= 108) {
         beadCount = 0;
         malasCompleted++;
-        if (navigator.vibrate) {
-          navigator.vibrate([100, 50, 150]);
-        }
+        if (navigator.vibrate) navigator.vibrate([100, 50, 150]);
       }
 
       localStorage.setItem('shiva_bead_count', beadCount);
@@ -288,52 +330,83 @@
       stopSpeech();
 
       const btnMala = document.getElementById('tab-btn-mala');
-      const btnStotram = document.getElementById('tab-btn-stotram');
+      const btnEnc = document.getElementById('tab-btn-encyclopedia');
       const viewMala = document.getElementById('mala-view');
-      const viewStotram = document.getElementById('stotram-view');
+      const viewEnc = document.getElementById('encyclopedia-view');
 
       if (tab === 'mala') {
         btnMala.classList.add('active');
-        btnStotram.classList.remove('active');
+        btnEnc.classList.remove('active');
         viewMala.classList.add('active');
-        viewStotram.classList.remove('active');
+        viewEnc.classList.remove('active');
       } else {
-        btnStotram.classList.add('active');
+        btnEnc.classList.add('active');
         btnMala.classList.remove('active');
-        viewStotram.classList.add('active');
+        viewEnc.classList.add('active');
         viewMala.classList.remove('active');
-        loadStotrams();
+        loadAllContent();
       }
     }
 
-    function loadStotrams() {
-      const container = document.getElementById('stotram-container');
-      if (stotramData && stotramData.length > 0) return;
+    function setFilter(category, btnEl) {
+      currentFilter = category;
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderContentList();
+    }
+
+    function loadAllContent() {
+      if (allContentData && allContentData.length > 0) return;
 
       fetch('data/content.json')
         .then(res => res.json())
         .then(items => {
-          stotramData = items;
-          container.innerHTML = items.map((item, index) => `
-            <div class="stotram-card">
-              <div class="stotram-header">
-                <div>
-                  <h2 class="stotram-title">${item.title}</h2>
-                  <div class="stotram-sub">${item.subtitle}</div>
-                </div>
-                <button class="tts-btn" id="tts-btn-${index}" onclick="toggleSpeech(${index})">
-                  🔊 Listen
-                </button>
-              </div>
-              <div class="stotram-verse">${item.sanskrit}</div>
-              <div class="stotram-trans">${item.translation}</div>
-            </div>
-          `).join('');
+          allContentData = items;
+          renderContentList();
         })
         .catch(err => {
           console.error("Content loading failed:", err);
-          container.innerHTML = '<p style="text-align:center; color: #a0abb6; padding: 20px;">Unable to load stotrams.</p>';
+          document.getElementById('content-container').innerHTML =
+            '<p style="text-align:center; color: #a0abb6; padding: 20px;">Unable to load content.</p>';
         });
+    }
+
+    function renderContentList() {
+      const container = document.getElementById('content-container');
+      const filtered = currentFilter === 'all' 
+        ? allContentData 
+        : allContentData.filter(item => item.type === currentFilter);
+
+      const typeMeta = {
+        mantra: { icon: '📿', label: 'Mantra' },
+        jyotirlinga: { icon: '🛕', label: 'Jyotirlinga' },
+        symbolism: { icon: '🔱', label: 'Sacred Symbol' },
+        lore: { icon: '📜', label: 'Divine Lore' }
+      };
+
+      container.innerHTML = filtered.map(item => {
+        const meta = typeMeta[item.type] || { icon: '🕉️', label: 'Devotion' };
+        const verseHtml = item.sanskrit 
+          ? `<div class="card-verse">${item.sanskrit}</div>` 
+          : '';
+
+        return `
+          <div class="content-card">
+            <div class="card-top">
+              <div>
+                <div class="card-badge">${meta.icon} ${meta.label}</div>
+                <h2 class="card-title">${item.title}</h2>
+                <div class="card-sub">${item.subtitle}</div>
+              </div>
+              <button class="tts-btn" id="tts-btn-${item.id}" onclick="toggleSpeech('${item.id}')">
+                🔊 Listen
+              </button>
+            </div>
+            ${verseHtml}
+            <div class="card-trans">${item.translation}</div>
+          </div>
+        `;
+      }).join('');
     }
 
     function invokeCapacitorPlugin(pluginName, methodName, options) {
@@ -355,45 +428,46 @@
       return Promise.reject("Native Capacitor bridge unavailable");
     }
 
-    async function toggleSpeech(index) {
-      if (currentlySpeakingIndex === index) {
+    async function toggleSpeech(id) {
+      if (currentlySpeakingId === id) {
         await stopSpeech();
         return;
       }
 
       await stopSpeech();
 
-      const item = stotramData[index];
-      const cleanSanskrit = item.sanskrit.replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
-      const cleanTranslation = item.translation.replace(/\n/g, ' ').trim();
+      const item = allContentData.find(x => x.id === id);
+      if (!item) return;
 
-      const btn = document.getElementById(`tts-btn-${index}`);
+      const cleanSanskrit = (item.sanskrit || '').replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
+      const cleanTranslation = (item.translation || '').replace(/\n/g, ' ').trim();
+
+      const btn = document.getElementById(`tts-btn-${id}`);
       if (btn) {
         btn.innerText = '⏹ Stop';
         btn.classList.add('speaking');
       }
-      currentlySpeakingIndex = index;
+      currentlySpeakingId = id;
 
       try {
-        // 1. Recite Sanskrit chant
+        if (cleanSanskrit) {
+          await invokeCapacitorPlugin('TextToSpeech', 'speak', {
+            text: cleanSanskrit,
+            lang: 'hi-IN',
+            rate: 0.85,
+            pitch: 1.0,
+            volume: 1.0,
+            category: 'ambient'
+          });
+
+          if (currentlySpeakingId !== id) return;
+          await new Promise(r => setTimeout(r, 600));
+          if (currentlySpeakingId !== id) return;
+        }
+
+        const preface = cleanSanskrit ? "Meaning: " : "";
         await invokeCapacitorPlugin('TextToSpeech', 'speak', {
-          text: cleanSanskrit,
-          lang: 'hi-IN',
-          rate: 0.85,
-          pitch: 1.0,
-          volume: 1.0,
-          category: 'ambient'
-        });
-
-        if (currentlySpeakingIndex !== index) return;
-
-        // Brief 600ms pause between Sanskrit verse and English meaning
-        await new Promise(r => setTimeout(r, 600));
-        if (currentlySpeakingIndex !== index) return;
-
-        // 2. Speak the English explanation
-        await invokeCapacitorPlugin('TextToSpeech', 'speak', {
-          text: "Meaning: " + cleanTranslation,
+          text: preface + cleanTranslation,
           lang: 'en-IN',
           rate: 0.95,
           pitch: 1.0,
@@ -402,35 +476,36 @@
         });
 
       } catch (nativeErr) {
-        console.warn("Capacitor speak fallback to Web Speech:", nativeErr);
-
+        console.warn("Falling back to Web Speech:", nativeErr);
         if ('speechSynthesis' in window) {
           window.speechSynthesis.cancel();
 
-          const sanskritUtterance = new SpeechSynthesisUtterance(cleanSanskrit);
-          sanskritUtterance.lang = 'hi-IN';
-          sanskritUtterance.rate = 0.85;
+          if (cleanSanskrit) {
+            const skUtterance = new SpeechSynthesisUtterance(cleanSanskrit);
+            skUtterance.lang = 'hi-IN';
+            skUtterance.rate = 0.85;
 
-          const engUtterance = new SpeechSynthesisUtterance("Meaning: " + cleanTranslation);
-          engUtterance.lang = 'en-IN';
-          engUtterance.rate = 0.95;
+            const enUtterance = new SpeechSynthesisUtterance("Meaning: " + cleanTranslation);
+            enUtterance.lang = 'en-IN';
+            enUtterance.rate = 0.95;
 
-          sanskritUtterance.onend = () => {
-            if (currentlySpeakingIndex === index) {
-              window.speechSynthesis.speak(engUtterance);
-            }
-          };
-
-          engUtterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-          engUtterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-          sanskritUtterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-
-          window.speechSynthesis.speak(sanskritUtterance);
+            skUtterance.onend = () => {
+              if (currentlySpeakingId === id) window.speechSynthesis.speak(enUtterance);
+            };
+            enUtterance.onend = () => resetTTSButtons();
+            window.speechSynthesis.speak(skUtterance);
+          } else {
+            const enUtterance = new SpeechSynthesisUtterance(cleanTranslation);
+            enUtterance.lang = 'en-IN';
+            enUtterance.rate = 0.95;
+            enUtterance.onend = () => resetTTSButtons();
+            window.speechSynthesis.speak(enUtterance);
+          }
           return;
         }
       } finally {
         resetTTSButtons();
-        currentlySpeakingIndex = null;
+        currentlySpeakingId = null;
       }
     }
 
@@ -443,7 +518,7 @@
         window.speechSynthesis.cancel();
       }
       resetTTSButtons();
-      currentlySpeakingIndex = null;
+      currentlySpeakingId = null;
     }
 
     function resetTTSButtons() {
@@ -451,6 +526,7 @@
         btn.innerText = '🔊 Listen';
         btn.classList.remove('speaking');
       });
+      currentlySpeakingId = null;
     }
   </script>
 </body>
