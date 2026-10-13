@@ -432,6 +432,85 @@
         window.speechSynthesis.getVoices();
       };
     }
-  </script>
-</body>
-</html>
+    // Direct bridge to native Capacitor plugin
+    async function nativeTTS(action, options = {}) {
+      if (window.Capacitor) {
+        // 1. Standard plugin lookup
+        if (window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech && window.Capacitor.Plugins.TextToSpeech[action]) {
+          return await window.Capacitor.Plugins.TextToSpeech[action](options);
+        }
+        // 2. Direct native bridge invocation for unbundled community plugins
+        if (typeof window.Capacitor.nativePromise === 'function') {
+          return await window.Capacitor.nativePromise('TextToSpeech', action, options);
+        }
+      }
+      throw new Error("Native Capacitor TTS bridge unavailable");
+    }
+
+    async function toggleSpeech(index) {
+      if (currentlySpeakingIndex === index) {
+        await stopSpeech();
+        return;
+      }
+
+      await stopSpeech();
+
+      const rawText = stotramData[index].sanskrit;
+      // Strip dandas and normalize spacing for natural Sanskrit cadence
+      const cleanText = rawText.replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
+
+      const btn = document.getElementById(`tts-btn-${index}`);
+      if (btn) {
+        btn.innerText = '⏹ Stop';
+        btn.classList.add('speaking');
+      }
+      currentlySpeakingIndex = index;
+
+      try {
+        // Call Android Native TTS directly via Capacitor bridge
+        await nativeTTS('speak', {
+          text: cleanText,
+          lang: 'hi-IN',
+          rate: 0.85,
+          pitch: 1.0,
+          volume: 1.0,
+          category: 'ambient'
+        });
+      } catch (nativeErr) {
+        console.warn("Capacitor Native bridge call failed, trying Web Speech:", nativeErr);
+
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(cleanText);
+          utterance.lang = 'hi-IN';
+          utterance.rate = 0.85;
+
+          const voices = window.speechSynthesis.getVoices();
+          const hiVoice = voices.find(v => v.lang && (v.lang.includes('hi') || v.lang.includes('IN')));
+          if (hiVoice) utterance.voice = hiVoice;
+
+          utterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+          utterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+          window.speechSynthesis.speak(utterance);
+          return;
+        } else {
+          alert("Native speech service could not be initialized on this device.");
+        }
+      } finally {
+        resetTTSButtons();
+        currentlySpeakingIndex = null;
+      }
+    }
+
+    async function stopSpeech() {
+      try {
+        await nativeTTS('stop');
+      } catch (e) {}
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      resetTTSButtons();
+      currentlySpeakingIndex = null;
+    }
+    
