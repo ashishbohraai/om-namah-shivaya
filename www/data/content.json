@@ -1,26 +1,38 @@
 [
   {
-    "id": "maha_mrityunjaya",
     "title": "महामृत्युंजय मंत्र",
-    "subtitle": "Maha Mrityunjaya Mantra",
+    "subtitle": "Maha Mrityunjaya Mantra (Rigveda)",
     "sanskrit": "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥",
-    "translation": "We meditate on the Three-eyed Lord who nourishes and sustains all beings. May He liberate us from the cycle of death into immortality.",
-    "target": 108
+    "translation": "We meditate on the Three-Eyed Lord who nourishes and sustains all life. May He liberate us from the bondage of death and rebirth into immortality, just as a ripe cucumber is effortlessly detached from its vine."
   },
   {
-    "id": "shiva_tandava",
+    "title": "द्वादश ज्योतिर्लिंग स्तोत्रम्",
+    "subtitle": "Dvadasha Jyotirlinga Stotram (The 12 Sacred Jyotirlingas)",
+    "sanskrit": "सौराष्ट्रे सोमनाथं च श्रीशैले मल्लिकार्जुनम्।\nउज्जयिन्यां महाकालं ओंकारममलेश्वरम्॥\n\nपरल्यां वैद्यनाथं च डाकिन्यां भीमशङ्करम्।\nसेतुबन्धे तु रामेशं नागेशं दारुकावने॥\n\nवारणस्यां तु विश्वेशं त्र्यम्बकं गौतमीतटे।\nहिमालये तु केदारं घुश्मेशं च शिवालये॥\n\nएतानि ज्योतिर्लिङ्गानि सायं प्रातः पठेन्नरः।\nसप्तजन्मकृतं पापं स्मरणेन विनश्यति॥",
+    "translation": "Somnath in Saurashtra, Mallikarjuna on Srisailam, Mahakaleshwar in Ujjain, and Omkareshwar.\nVaidyanath in Parli, Bhimashankar in Dakini, Rameshwara at Setubandha, and Nageshwar in Darukavana.\nVishweshwar in Varanasi, Trimbakeshwar on the banks of Godavari, Kedarnath in the Himalayas, and Ghushmeshwar in Shivalaya.\n\nWhoever recites these twelve Jyotirlingas morning and evening destroys the sins of seven lifetimes by simple remembrance."
+  },
+  {
     "title": "शिव ताण्डव स्तोत्रम्",
-    "subtitle": "Shiva Tandava Stotram",
+    "subtitle": "Shiva Tandava Stotram (by Ravana)",
     "sanskrit": "जटाटवीगलज्जलप्रवाहपावितस्थले\nगलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्।\nडमड्डमड्डमड्डमन्निनादवड्डमर्वयं\nचकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
-    "translation": "With His neck sanctified by the celestial waters trickling through His matted hair, wearing a lofty serpent necklace, and moving to the resonant rhythm of the damru, may Lord Shiva bring auspiciousness to all.",
-    "target": 11
+    "translation": "With His neck sanctified by celestial waters trickling through His matted coils, adorned with a massive serpent necklace, moving rhythmically to the resonant beats of His Damru—may Lord Shiva perform His cosmic dance and bestow auspiciousness upon us."
   },
   {
-    "id": "rudrashtakam",
     "title": "श्री रुद्राष्टकम्",
-    "subtitle": "Shri Rudrashtakam",
+    "subtitle": "Shri Rudrashtakam (Goswami Tulsidas)",
     "sanskrit": "नमामीशमीशान निर्वाणरूपं\nविभुं व्यापकं ब्रह्मवेदस्वरूपम्।\nनिजं निर्गुणं निर्विकल्पं निरीहं\nचिदाकाशमाकाशवासं भजेऽहम्॥",
-    "translation": "I bow to the Supreme Lord, the master of all directions, the embodiment of liberation, omnipresent, all-pervading, and the very essence of the Vedas.",
-    "target": 1
+    "translation": "I bow to the Lord of Ishana, the embodiment of ultimate liberation, all-pervading, the very essence of the Vedas and Brahman. Inherent, formless, unconditioned, desireless, boundless as the sky of pure consciousness—I worship Thee."
+  },
+  {
+    "title": "शिव चालीसा",
+    "subtitle": "Shiva Chalisa (Selected Key Verses)",
+    "sanskrit": "जय गणेश गिरिजा सुवन, मंगल मूल सुजान।\nकहत अयोध्यादास तुम, देहु अभय वरदान॥\n\nजय गिरिजा पति दीन दयाला। सदा करत सन्तन प्रतिपाला॥\nभाल चन्द्रमा सोहत नीके। कानन कुण्डल नागफणी के॥\n\nअंग गौर शिर गंग बहाये। मुण्डमाल तन क्षार लगाये॥\nवस्त्र खाल बाघम्बर सोहे। छवि को देख नाग मुनि मोहे॥",
+    "translation": "Hail the Lord of Parvati, merciful to the humble, protector of saints. The crescent moon adorns His forehead, serpents loop around His ears, the Ganga flows from His locks, and sacred ash covers His radiant form."
+  },
+  {
+    "title": "शिव अष्टोत्तर शतनामावली",
+    "subtitle": "Shri Shiva Ashtottara Shatanamavali (108 Holy Names)",
+    "sanskrit": "ॐ शिवाय नमः। ॐ महेश्वराय नमः। ॐ शम्भवे नमः।\nॐ पिनाकिने नमः। ॐ शशिशेखराय नमः। ॐ वामदेवाय नमः।\nॐ विरूपाक्षाय नमः। ॐ कपर्दिने नमः। ॐ नीललोहिताय नमः।\nॐ शंकराय नमः। ॐ शूलपाणये नमः। ॐ खट्वाङ्गिने नमः।\nॐ विष्णुवल्लभाय नमः। ॐ शिपिविष्टाय नमः। ॐ अम्बिकानाथाय नमः।\nॐ श्रीकण्ठाय नमः। ॐ भक्तवत्सलाय नमः। ॐ भवाय नमः।\nॐ शर्वाय नमः। ॐ त्रिलोकेशाय नमः। ॐ शितिकण्ठाय नमः...\n\n(इति श्री शिवाष्टोत्तरशतनामावली सम्पूर्णा)",
+    "translation": "Salutations to Shiva the Auspicious, Maheshwara the Supreme Lord, Shambhu the Source of Joy, Pinakina the Wielder of the Bow, Shashishekhara Who wears the Moon, and Nilalohita the Blue-Throated Redeemer."
   }
 ]
