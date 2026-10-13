@@ -56,39 +56,26 @@ jobs:
             cp -f icon.png "$dir/ic_launcher_foreground.png"
           done
 
-      - name: Build Unsigned Release APK
+      - name: Configure Release Build Signing
+        run: |
+          # Configure release buildType to sign with debug key so assembleRelease completes cleanly
+          cd android/app
+          sed -i '/buildTypes {/,/}/ { /release {/!b; :a; n; /}/!ba; a \        signingConfig signingConfigs.debug
+          }' build.gradle || true
+
+      - name: Build Release APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleRelease
 
-      - name: Generate Keystore
+      - name: Locate & Rename Release APK
         run: |
-          keytool -genkeypair -v \
-            -keystore release.jks \
-            -alias shivakey \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -storepass "ShivaPass108" \
-            -keypass "ShivaPass108" \
-            -dname "CN=Shiva Devotion, OU=Devotion, O=Shiva App, L=Mumbai, ST=Maharashtra, C=IN"
-          
-          # Convert keystore to base64 for the signing action
-          echo "KEYSTORE_BASE64=$(base64 -w 0 release.jks)" >> $GITHUB_ENV
+          find android/app/build/outputs/apk -name "*.apk"
+          cp android/app/build/outputs/apk/release/*.apk Shiva-Devotion-Release.apk || cp android/app/build/outputs/apk/*/*.apk Shiva-Devotion-Release.apk
 
-      - name: Sign Android Release APK
-        uses: r0adkll/sign-android-release@v1
-        id: sign_app
-        with:
-          releaseDirectory: android/app/build/outputs/apk/release
-          signingKey: ${{ env.KEYSTORE_BASE64 }}
-          keyStorePassword: "ShivaPass108"
-          alias: "shivakey"
-          keyPassword: "ShivaPass108"
-
-      - name: Upload Signed Release APK
+      - name: Upload Release APK
         uses: actions/upload-artifact@v4
         with:
           name: Shiva-Devotion-Release-APK
-          path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+          path: Shiva-Devotion-Release.apk
