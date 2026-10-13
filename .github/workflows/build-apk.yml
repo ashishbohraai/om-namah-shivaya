@@ -56,45 +56,31 @@ jobs:
             cp -f icon.png "$dir/ic_launcher_foreground.png"
           done
 
-      - name: Build Unsigned Release APK
+      - name: Setup Release Keystore & Gradle Signing
+        run: |
+          cd android/app
+          keytool -genkeypair -v \
+            -keystore my-release-key.jks \
+            -alias shiva-key \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -storepass "ShivaPass108" \
+            -keypass "ShivaPass108" \
+            -dname "CN=Shiva Devotion, OU=Devotion, O=Shiva App, L=Mumbai, ST=Maharashtra, C=IN"
+
+          # Configure build.gradle to use the keystore for release builds
+          sed -i '/buildTypes {/i \    signingConfigs {\n        release {\n            storeFile file("my-release-key.jks")\n            storePassword "ShivaPass108"\n            keyAlias "shiva-key"\n            keyPassword "ShivaPass108"\n        }\n    }' build.gradle
+          sed -i '/release {/a \            signingConfig signingConfigs.release' build.gradle
+
+      - name: Build Signed Release APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleRelease
 
-      - name: Generate Keystore & Sign Release APK
-        run: |
-          # 1. Create a dedicated release keystore
-          keytool -genkeypair -v \
-            -keystore my-release-key.jks \
-            -alias shiva-release-key \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -storepass "ShivaAppSecretPass108" \
-            -keypass "ShivaAppSecretPass108" \
-            -dname "CN=Shiva Devotion, OU=Devotion, O=Shiva App, L=Mumbai, ST=Maharashtra, C=IN"
-
-          # 2. Locate Android build-tools zipalign and apksigner
-          BUILD_TOOLS_PATH=$(find $ANDROID_HOME/build-tools -maxdepth 1 -mindepth 1 | sort -V | tail -n 1)
-          
-          # 3. Align the unsigned release APK
-          $BUILD_TOOLS_PATH/zipalign -v -p 4 \
-            android/app/build/outputs/apk/release/app-release-unsigned.apk \
-            Shiva-Release-aligned.apk
-
-          # 4. Sign the APK with the newly generated key
-          $BUILD_TOOLS_PATH/apksigner sign \
-            --ks my-release-key.jks \
-            --ks-pass pass:"ShivaAppSecretPass108" \
-            --ks-key-alias shiva-release-key \
-            --key-pass pass:"ShivaAppSecretPass108" \
-            --out Shiva-Devotion-Release.apk \
-            Shiva-Release-aligned.apk
-
       - name: Upload Signed Release APK
         uses: actions/upload-artifact@v4
         with:
           name: Shiva-Devotion-Release-APK
-          path: Shiva-Devotion-Release.apk
-          compression-level: 0
+          path: android/app/build/outputs/apk/release/app-release.apk
