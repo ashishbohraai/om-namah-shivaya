@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Om Namah Shivaya</title>
+  <script src="capacitor.js"></script>
   <style>
     :root {
       --bg: #0c0e12;
@@ -240,7 +241,7 @@
   <!-- Stotram Viewer Tab -->
   <section id="stotram-view" class="view">
     <div class="stotram-list" id="stotram-container">
-      <!-- Injected from data/content.json -->
+      <!-- Loaded dynamically from data/content.json -->
     </div>
   </section>
 
@@ -329,8 +330,8 @@
     }
 
     function getTTSPlugin() {
-      if (window.Capacitor && window.Capacitor.Plugins) {
-        return window.Capacitor.Plugins.TextToSpeech || null;
+      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
+        return window.Capacitor.Plugins.TextToSpeech;
       }
       return null;
     }
@@ -344,7 +345,7 @@
       await stopSpeech();
 
       const rawText = stotramData[index].sanskrit;
-      const cleanText = rawText.replace(/[॥।\n]/g, ' ');
+      const cleanText = rawText.replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
 
       const btn = document.getElementById(`tts-btn-${index}`);
       if (btn) {
@@ -355,6 +356,7 @@
 
       const TTS = getTTSPlugin();
 
+      // Attempt Native Capacitor Plugin
       if (TTS) {
         try {
           await TTS.speak({
@@ -365,31 +367,43 @@
             volume: 1.0,
             category: 'ambient'
           });
-        } catch (err) {
-          console.error("Native TTS Error:", err);
-          fallbackWebSpeech(cleanText);
-        } finally {
           resetTTSButtons();
           currentlySpeakingIndex = null;
+          return;
+        } catch (err) {
+          console.warn("Capacitor TTS fallback:", err);
         }
-      } else {
-        fallbackWebSpeech(cleanText);
       }
-    }
 
-    function fallbackWebSpeech(text) {
-      if (!('speechSynthesis' in window)) {
+      // Fallback: Web Speech API
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = 'hi-IN';
+        utterance.rate = 0.85;
+
+        const voices = window.speechSynthesis.getVoices();
+        const hiVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('IN'));
+        if (hiVoice) {
+          utterance.voice = hiVoice;
+        }
+
+        utterance.onend = () => {
+          resetTTSButtons();
+          currentlySpeakingIndex = null;
+        };
+
+        utterance.onerror = () => {
+          resetTTSButtons();
+          currentlySpeakingIndex = null;
+        };
+
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Please ensure Google Speech Services / Text-to-Speech is enabled in device settings.");
         resetTTSButtons();
         currentlySpeakingIndex = null;
-        return;
       }
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'hi-IN';
-      utterance.rate = 0.85;
-      utterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-      utterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-      window.speechSynthesis.speak(utterance);
     }
 
     async function stopSpeech() {
@@ -411,6 +425,12 @@
         btn.innerText = '🔊 Listen';
         btn.classList.remove('speaking');
       });
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+      };
     }
   </script>
 </body>
