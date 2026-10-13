@@ -336,6 +336,25 @@
         });
     }
 
+    function invokeCapacitorPlugin(pluginName, methodName, options) {
+      if (window.Capacitor) {
+        if (window.Capacitor.Plugins && window.Capacitor.Plugins[pluginName] && window.Capacitor.Plugins[pluginName][methodName]) {
+          return window.Capacitor.Plugins[pluginName][methodName](options);
+        }
+        if (typeof window.Capacitor.nativePromise === 'function') {
+          return window.Capacitor.nativePromise(pluginName, methodName, options);
+        }
+        if (typeof window.Capacitor.toNative === 'function') {
+          return new Promise((resolve, reject) => {
+            window.Capacitor.toNative(pluginName, methodName, options, {
+              callback: (result, err) => err ? reject(err) : resolve(result)
+            });
+          });
+        }
+      }
+      return Promise.reject("Native Capacitor bridge unavailable");
+    }
+
     async function toggleSpeech(index) {
       if (currentlySpeakingIndex === index) {
         await stopSpeech();
@@ -344,8 +363,9 @@
 
       await stopSpeech();
 
-      const rawText = stotramData[index].sanskrit;
-      const cleanText = rawText.replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
+      const item = stotramData[index];
+      const cleanSanskrit = item.sanskrit.replace(/[॥।\n]/g, ' ').replace(/\s+/g, ' ').trim();
+      const cleanTranslation = item.translation.replace(/\n/g, ' ').trim();
 
       const btn = document.getElementById(`tts-btn-${index}`);
       if (btn) {
@@ -354,48 +374,71 @@
       }
       currentlySpeakingIndex = index;
 
-      // Call native Android TTS bridge
-      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
-        try {
-          await window.Capacitor.Plugins.TextToSpeech.speak({
-            text: cleanText,
-            lang: 'hi-IN',
-            rate: 0.85,
-            pitch: 1.0,
-            volume: 1.0,
-            category: 'ambient'
-          });
-          resetTTSButtons();
-          currentlySpeakingIndex = null;
+      try {
+        // 1. Recite Sanskrit chant
+        await invokeCapacitorPlugin('TextToSpeech', 'speak', {
+          text: cleanSanskrit,
+          lang: 'hi-IN',
+          rate: 0.85,
+          pitch: 1.0,
+          volume: 1.0,
+          category: 'ambient'
+        });
+
+        if (currentlySpeakingIndex !== index) return;
+
+        // Brief 600ms pause between Sanskrit verse and English meaning
+        await new Promise(r => setTimeout(r, 600));
+        if (currentlySpeakingIndex !== index) return;
+
+        // 2. Speak the English explanation
+        await invokeCapacitorPlugin('TextToSpeech', 'speak', {
+          text: "Meaning: " + cleanTranslation,
+          lang: 'en-IN',
+          rate: 0.95,
+          pitch: 1.0,
+          volume: 1.0,
+          category: 'ambient'
+        });
+
+      } catch (nativeErr) {
+        console.warn("Capacitor speak fallback to Web Speech:", nativeErr);
+
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+
+          const sanskritUtterance = new SpeechSynthesisUtterance(cleanSanskrit);
+          sanskritUtterance.lang = 'hi-IN';
+          sanskritUtterance.rate = 0.85;
+
+          const engUtterance = new SpeechSynthesisUtterance("Meaning: " + cleanTranslation);
+          engUtterance.lang = 'en-IN';
+          engUtterance.rate = 0.95;
+
+          sanskritUtterance.onend = () => {
+            if (currentlySpeakingIndex === index) {
+              window.speechSynthesis.speak(engUtterance);
+            }
+          };
+
+          engUtterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+          engUtterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+          sanskritUtterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
+
+          window.speechSynthesis.speak(sanskritUtterance);
           return;
-        } catch (e) {
-          console.warn("Capacitor speak error", e);
         }
-      }
-
-      // Android Web Speech fallback
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        utterance.lang = 'hi-IN';
-        utterance.rate = 0.85;
-
-        utterance.onend = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-        utterance.onerror = () => { resetTTSButtons(); currentlySpeakingIndex = null; };
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert("Text-to-speech could not be played.");
+      } finally {
         resetTTSButtons();
         currentlySpeakingIndex = null;
       }
     }
 
     async function stopSpeech() {
-      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) {
-        try {
-          await window.Capacitor.Plugins.TextToSpeech.stop();
-        } catch (e) {}
-      }
+      try {
+        await invokeCapacitorPlugin('TextToSpeech', 'stop', {});
+      } catch (e) {}
+
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
