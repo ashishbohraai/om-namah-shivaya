@@ -154,49 +154,97 @@
   {
     "id": "lore_1",
     "type": "lore",
-    "title": "नीलकंठ (Neelkantha)",
+    "title": "१. नीलकंठ (Neelkantha)",
     "subtitle": "The Churning of the Ocean & Halahala",
     "sanskrit": "गले विषं यस्य विभूतिभूषणं नमामि शम्भुं गिरिजासहायम्।",
-    "translation": "During Samudra Manthan, when lethal Halahala poison arose threatening all existence, Shiva drank it out of boundless compassion. Goddess Parvati held His throat to stop it, turning His neck blue and saving the universe."
+    "translation": "During Samudra Manthan, when lethal Halahala poison arose threatening all existence, Shiva consumed it out of boundless compassion. Goddess Parvati held His throat to halt its spread, turning His neck blue and preserving creation."
   },
   {
     "id": "lore_2",
     "type": "lore",
-    "title": "गंगावतरण (Descent of Ganga)",
+    "title": "२. गंगावतरण (Descent of Ganga)",
     "subtitle": "Taming the Celestial River",
     "sanskrit": "गङ्गातरङ्गरमणीयजटाकलापं गौरीनिरन्तरविभूषितवामभागम्।",
-    "translation": "To quench King Bhagiratha's penance without shattering the earth, Shiva caught the torrential descent of the celestial river Ganga in His matted dreadlocks, gently releasing her as seven sacred streams to bless humanity."
+    "translation": "To fulfill King Bhagiratha's tapasya without shattering the earth beneath the torrential celestial river Ganga, Shiva caught her turbulent torrent in His matted locks, releasing her as peaceful, sanctifying rivers."
   },
   {
     "id": "lore_3",
     "type": "lore",
-    "title": "आनन्द ताण्डव (Ananda Tandava)",
-    "subtitle": "The Cosmic Dance of Creation and Dissolution",
-    "sanskrit": "जटाटवीगलज्जलप्रवाहपावितस्थले गलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्।\nडमड्डमड्डमड्डमन्निनादवड्डमर्वयं चकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
-    "translation": "As Nataraja in Chidambaram, Shiva performs the Ananda Tandava—the cosmic dance of five activities (Pancha-Kritya): creation, preservation, destruction, illusion, and grace. He crushes the demon Apasmara beneath His foot, symbolizing the vanquishing of spiritual ignorance and ego."
+    "title": "३. आनन्द ताण्डव (Ananda Tandava)",
+    "subtitle": "The Cosmic Dance of Chidambaram",
+    "sanskrit": "डमड्डमड्डमड्डमन्निनादवड्डमर्वयं चकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
+    "translation": "As Nataraja, Shiva performs the Ananda Tandava—the eternal dance of five cosmic actions: creation, sustenance, dissolution, concealment, and grace. Beneath His foot, He subdues the dwarf Apasmara, signifying the defeat of spiritual ignorance."
   },
   {
     "id": "lore_4",
     "type": "lore",
-    "title": "त्रिपुर संहार (Tripurantaka)",
-    "subtitle": "The Destruction of the Three Demon Citadels",
+    "title": "४. त्रिपुर संहार (Tripurantaka)",
+    "subtitle": "The Annihilation of the Three Citadels",
     "sanskrit": "त्रिपुरदहनाय धनुर्धराय पिनाकिने नमः शिवाय।",
-    "translation": "When three invincible demon brothers constructed the flying fortresses of gold, silver, and iron known as Tripura, the cosmos pleaded for deliverance. Shiva mounted the Earth as His chariot, Mount Meru as His bow, and Vishnu as His arrow, annihilating all three citadels with a single fiery arrow of concentrated cosmic will."
+    "translation": "When three demon brothers built impenetrable flying fortresses of gold, silver, and iron, Shiva made Earth His chariot, Mount Meru His bow, and Lord Vishnu His arrow, annihilating all three realms in a single aligned shot of unified will."
   },
   {
     "id": "lore_5",
     "type": "lore",
-    "title": "कामदहन (The Incineration of Kama)",
-    "subtitle": "Transcendence Over Desire",
+    "title": "५. कामदहन (The Incineration of Kama)",
+    "subtitle": "Conquest Over Worldly Desire",
     "sanskrit": "दग्धकामोऽपि कामदः सर्वकामावाप्तिहेतुः।",
-    "translation": "When the gods sent Kamadeva, the deity of desire, to break Shiva’s profound meditation so He would unite with Parvati, Shiva opened His fiery third eye. A blaze of pure wisdom instantly reduced Kama to ashes, demonstrating that true spiritual union transcends fleeting worldly attachment."
+    "translation": "When Kamadeva shot flower-arrows to disturb Shiva's profound yogic penance, Shiva opened His third eye of pristine awakening, instantly reducing Kama to ash to demonstrate that divine union arises from consciousness, not lust."
   },
   {
     "id": "lore_6",
     "type": "lore",
-    "title": "महाशिवरात्रि व लिङ्गोद्भव (Lingodbhava)",
-    "subtitle": "The Infinite Pillar of Light",
-    "sanskrit": "ब्रह्मा विष्णुर्महेशश्च यन्मध्ये लीयते जगत्।\nअनादिमध्यान्तरूपं ज्योतिर्लिङ्गं नमाम्यहम्॥",
-    "translation": "When Brahma and Vishnu contested supremacy, an infinite, pillarless column of cosmic fire (Jyotirlinga) pierced through eternity. Unable to find its beginning or end, both realized Shiva as the formless, limitless consciousness without start or conclusion—a divine manifestation commemorated annually on Maha Shivaratri."
+    "title": "६. लिङ्गोद्भव (Lingodbhava)",
+    "subtitle": "The Infinite Column of Cosmic Light",
+    "sanskrit": "अनादिमध्यान्तरूपं ज्योतिर्लिङ्गं नमाम्यहम्।",
+    "translation": "When Brahma and Vishnu contested primacy, Shiva manifested as a boundless pillar of flaming light with no root or crown. Acknowledging His uncontainable infinity, both realized the supreme formless truth commemorated on Maha Shivaratri."
+  },
+  {
+    "id": "lore_7",
+    "type": "lore",
+    "title": "७. कालसंहर मूर्ति (Markandeya's Deliverance)",
+    "subtitle": "Conqueror of Death and Protector of Bhakti",
+    "sanskrit": "मृत्युञ्जयाय रुद्राय नीलकण्ठाय शम्भवे।\nअमृतेशाय शर्वाय महादेवाय ते नमः॥",
+    "translation": "Destined to perish at age sixteen, the young sage Markandeya embraced the Shiva Linga in complete devotion. When Yama arrived with his noose, Shiva burst forth from the linga, repelled death itself, and blessed Markandeya with eternal youth."
+  },
+  {
+    "id": "lore_8",
+    "type": "lore",
+    "title": "८. दक्ष यज्ञ विलोप (Daksha Yajna & Virabhadra)",
+    "subtitle": "The Fall of Spiritual Pride",
+    "sanskrit": "दक्षयज्ञविनाशाय वीरभद्राय ते नमः।",
+    "translation": "When King Daksha insulted Shiva during a grand sacrifice, leading Sati to immolate herself in yogic fire, an aggrieved Shiva plucked a dreadlock and summoned Virabhadra. The ritual was dismantled, crushing arrogant ego and reaffirming supreme cosmic order."
+  },
+  {
+    "id": "lore_9",
+    "type": "lore",
+    "title": "९. अर्धनारीश्वर (Ardhanarishvara)",
+    "subtitle": "The Inseparable Cosmic Polarity",
+    "sanskrit": "चाpropertyम्पेयगौरार्धशरीरकायै कर्पूरगौरार्धशरीरकाय।\nधम्मिल्लकायै च जटाधराय नमः शिवायै च नमः शिवाय॥",
+    "translation": "Shiva revealed Himself as half-male and half-female alongside Parvati, manifesting that Purusha (pure consciousness) and Prakriti (creative dynamic force) are indivisible wholes essential to the rhythm of reality."
+  },
+  {
+    "id": "lore_10",
+    "type": "lore",
+    "title": "१०. शरभ अवतार (Sharabha Avatar)",
+    "subtitle": "Pacifying the Fierce Divine Energy",
+    "sanskrit": "पक्षिराजाय देवाय शरभाय नमो नमः।",
+    "translation": "Following the vanquishing of Hiranyakashipu, Narasimha's blazing fury remained unquenched. Shiva manifested as Sharabha—an eight-legged winged creature—to embrace and pacify Narasimha, restoring gentle balance across the cosmos."
+  },
+  {
+    "id": "lore_11",
+    "type": "lore",
+    "title": "११. दक्षिणमूर्ति (Dakshinamurti)",
+    "subtitle": "The Silent Primordial Guru",
+    "sanskrit": "गुरवे सर्वलोकानां भिषजे भवरोगिणाम्।\nनिधये सर्वविद्यानां दक्षिणामूर्तये नमः॥",
+    "translation": "Facing south in profound stillness beneath a banyan tree, the youthful Shiva instructs elderly rishis through silent exposition (Mouna Vyakhya), instantly extinguishing all mental doubts through direct transmission of self-realization."
+  },
+  {
+    "id": "lore_12",
+    "type": "lore",
+    "title": "१२. रावणानुग्रह (Ravananugraha)",
+    "subtitle": "The Humbling of Ravana & Shiva Tandava Stotram",
+    "sanskrit": "जटाकटाहसम्भ्रमभ्रमन्निलिम्पनिर्झरी विलोलवीचिवल्लरीविराजमानमूर्धनि।",
+    "translation": "When the mighty king Ravana attempted to uproot Mount Kailash in hubris, Shiva pinned the mountain with His toe. Recognizing the supreme power, Ravana fashioned a veena from his own arm and sang the Shiva Tandava Stotram, earning Shiva’s profound grace and the divine sword Chandrahas."
   }
 ]
